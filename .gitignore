@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build outputs (regenerated via build:web and build:minigame)
+preview-web/dist/
+/minigame/
+
+# Test & cache outputs
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local environment
+.env
+.env.*
+
+# OS & editor files
+.DS_Store
+.idea/
+.vscode/

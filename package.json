@@ -1,0 +1,22 @@
+{
+  "name": "tidy-home",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Tidy Home (收纳小当家) - 无限关卡休闲收纳整理小游戏 (纯TS核心 + 微信原生小游戏 + Web/中控屏H5)",
+  "scripts": {
+    "dev": "vite --config preview-web/vite.config.ts --port 5173 --host 127.0.0.1",
+    "build:web": "vite build --config preview-web/vite.config.ts",
+    "build:minigame": "node scripts/build-minigame.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "gen:sprites": "node scripts/generate-sprites.mjs",
+    "gen:ui": "node scripts/generate-ui-icons.mjs",
+    "gen:audio": "node scripts/generate-audio.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.9"
+  }
+}

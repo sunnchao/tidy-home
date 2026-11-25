@@ -1,0 +1,434 @@
+[
+  {
+    "id": "handbag",
+    "name": "手提包",
+    "category": "living",
+    "radius": 46,
+    "color": "#F2845C",
+    "spriteResource": "sprites/handbag",
+    "spriteWebUrl": "/resources/sprites/handbag.png"
+  },
+  {
+    "id": "thermos",
+    "name": "保温杯",
+    "category": "general",
+    "radius": 41,
+    "color": "#59B8D9",
+    "spriteResource": "sprites/thermos",
+    "spriteWebUrl": "/resources/sprites/thermos.png"
+  },
+  {
+    "id": "teddy",
+    "name": "小熊玩偶",
+    "category": "bedroom",
+    "radius": 47,
+    "color": "#D48B56",
+    "spriteResource": "sprites/teddy",
+    "spriteWebUrl": "/resources/sprites/teddy.png"
+  },
+  {
+    "id": "ukulele",
+    "name": "尤克里里",
+    "category": "living",
+    "radius": 47,
+    "color": "#E8924C",
+    "spriteResource": "sprites/ukulele",
+    "spriteWebUrl": "/resources/sprites/ukulele.png"
+  },
+  {
+    "id": "lamp",
+    "name": "小台灯",
+    "category": "bedroom",
+    "radius": 44,
+    "color": "#FFE08C",
+    "spriteResource": "sprites/lamp",
+    "spriteWebUrl": "/resources/sprites/lamp.png"
+  },
+  {
+    "id": "yarn",
+    "name": "毛线球",
+    "category": "living",
+    "radius": 42,
+    "color": "#F07394",
+    "spriteResource": "sprites/yarn",
+    "spriteWebUrl": "/resources/sprites/yarn.png"
+  },
+  {
+    "id": "coffee_cup",
+    "name": "热咖啡",
+    "category": "kitchen",
+    "radius": 42,
+    "color": "#FC9651",
+    "spriteResource": "sprites/coffee_cup",
+    "spriteWebUrl": "/resources/sprites/coffee_cup.png"
+  },
+  {
+    "id": "pan",
+    "name": "煎蛋锅",
+    "category": "kitchen",
+    "radius": 47,
+    "color": "#5A636E",
+    "spriteResource": "sprites/pan",
+    "spriteWebUrl": "/resources/sprites/pan.png"
+  },
+  {
+    "id": "baguette",
+    "name": "法棍面包",
+    "category": "kitchen",
+    "radius": 45,
+    "color": "#E59C47",
+    "spriteResource": "sprites/baguette",
+    "spriteWebUrl": "/resources/sprites/baguette.png"
+  },
+  {
+    "id": "cake",
+    "name": "草莓蛋糕",
+    "category": "kitchen",
+    "radius": 44,
+    "color": "#F2859C",
+    "spriteResource": "sprites/cake",
+    "spriteWebUrl": "/resources/sprites/cake.png"
+  },
+  {
+    "id": "succulent",
+    "name": "多肉盆栽",
+    "category": "living",
+    "radius": 42,
+    "color": "#6EC072",
+    "spriteResource": "sprites/succulent",
+    "spriteWebUrl": "/resources/sprites/succulent.png"
+  },
+  {
+    "id": "camera",
+    "name": "复古相机",
+    "category": "general",
+    "radius": 44,
+    "color": "#465668",
+    "spriteResource": "sprites/camera",
+    "spriteWebUrl": "/resources/sprites/camera.png"
+  },
+  {
+    "id": "headphone",
+    "name": "头戴耳机",
+    "category": "living",
+    "radius": 46,
+    "color": "#4FA1DA",
+    "spriteResource": "sprites/headphone",
+    "spriteWebUrl": "/resources/sprites/headphone.png"
+  },
+  {
+    "id": "book",
+    "name": "精装画册",
+    "category": "general",
+    "radius": 44,
+    "color": "#5D87C7",
+    "spriteResource": "sprites/book",
+    "spriteWebUrl": "/resources/sprites/book.png"
+  },
+  {
+    "id": "pillow",
+    "name": "暖色抱枕",
+    "category": "bedroom",
+    "radius": 46,
+    "color": "#FFBE7B",
+    "spriteResource": "sprites/pillow",
+    "spriteWebUrl": "/resources/sprites/pillow.png"
+  },
+  {
+    "id": "slipper",
+    "name": "毛绒拖鞋",
+    "category": "bedroom",
+    "radius": 42,
+    "color": "#FC9651",
+    "spriteResource": "sprites/slipper",
+    "spriteWebUrl": "/resources/sprites/slipper.png"
+  },
+  {
+    "id": "umbrella",
+    "name": "晴雨伞",
+    "category": "living",
+    "radius": 46,
+    "color": "#4FA1DA",
+    "spriteResource": "sprites/umbrella",
+    "spriteWebUrl": "/resources/sprites/umbrella.png"
+  },
+  {
+    "id": "alarm_clock",
+    "name": "小闹钟",
+    "category": "bedroom",
+    "radius": 42,
+    "color": "#EB6A5B",
+    "spriteResource": "sprites/alarm_clock",
+    "spriteWebUrl": "/resources/sprites/alarm_clock.png"
+  },
+  {
+    "id": "hairdryer",
+    "name": "吹风机",
+    "category": "bedroom",
+    "radius": 44,
+    "color": "#FFABC9",
+    "spriteResource": "sprites/hairdryer",
+    "spriteWebUrl": "/resources/sprites/hairdryer.png"
+  },
+  {
+    "id": "skincare",
+    "name": "保湿精华",
+    "category": "bedroom",
+    "radius": 40,
+    "color": "#63C7B2",
+    "spriteResource": "sprites/skincare",
+    "spriteWebUrl": "/resources/sprites/skincare.png"
+  },
+  {
+    "id": "cat_can",
+    "name": "猫粮罐头",
+    "category": "kitchen",
+    "radius": 42,
+    "color": "#FC9651",
+    "spriteResource": "sprites/cat_can",
+    "spriteWebUrl": "/resources/sprites/cat_can.png"
+  },
+  {
+    "id": "gamepad",
+    "name": "游戏手柄",
+    "category": "living",
+    "radius": 46,
+    "color": "#8C7AE6",
+    "spriteResource": "sprites/gamepad",
+    "spriteWebUrl": "/resources/sprites/gamepad.png"
+  },
+  {
+    "id": "snack_bag",
+    "name": "脆脆薯片",
+    "category": "kitchen",
+    "radius": 42,
+    "color": "#FFD147",
+    "spriteResource": "sprites/snack_bag",
+    "spriteWebUrl": "/resources/sprites/snack_bag.png"
+  },
+  {
+    "id": "cap",
+    "name": "棒球帽",
+    "category": "general",
+    "radius": 44,
+    "color": "#4FA1DA",
+    "spriteResource": "sprites/cap",
+    "spriteWebUrl": "/resources/sprites/cap.png"
+  },
+  {
+    "id": "sneaker",
+    "name": "帆布鞋",
+    "category": "living",
+    "radius": 45,
+    "color": "#59B8D9",
+    "spriteResource": "sprites/sneaker",
+    "spriteWebUrl": "/resources/sprites/sneaker.png"
+  },
+  {
+    "id": "donut",
+    "name": "甜甜圈",
+    "category": "kitchen",
+    "radius": 42,
+    "color": "#FF8FAB",
+    "spriteResource": "sprites/donut",
+    "spriteWebUrl": "/resources/sprites/donut.png"
+  },
+  {
+    "id": "teacup",
+    "name": "抹茶杯",
+    "category": "kitchen",
+    "radius": 41,
+    "color": "#85CFA0",
+    "spriteResource": "sprites/teacup",
+    "spriteWebUrl": "/resources/sprites/teacup.png"
+  },
+  {
+    "id": "cactus",
+    "name": "仙人掌",
+    "category": "living",
+    "radius": 42,
+    "color": "#6EC072",
+    "spriteResource": "sprites/cactus",
+    "spriteWebUrl": "/resources/sprites/cactus.png"
+  },
+  {
+    "id": "notebook",
+    "name": "手账本",
+    "category": "bedroom",
+    "radius": 43,
+    "color": "#F295B2",
+    "spriteResource": "sprites/notebook",
+    "spriteWebUrl": "/resources/sprites/notebook.png"
+  },
+  {
+    "id": "kettle",
+    "name": "电水壶",
+    "category": "kitchen",
+    "radius": 45,
+    "color": "#59B8D9",
+    "spriteResource": "sprites/kettle",
+    "spriteWebUrl": "/resources/sprites/kettle.png"
+  },
+  {
+    "id": "cookie_box",
+    "name": "曲奇盒",
+    "category": "kitchen",
+    "radius": 44,
+    "color": "#7AC3EE",
+    "spriteResource": "sprites/cookie_box",
+    "spriteWebUrl": "/resources/sprites/cookie_box.png"
+  },
+  {
+    "id": "sweater",
+    "name": "折毛衣",
+    "category": "bedroom",
+    "radius": 46,
+    "color": "#F5B882",
+    "spriteResource": "sprites/sweater",
+    "spriteWebUrl": "/resources/sprites/sweater.png"
+  },
+  {
+    "id": "sunglasses",
+    "name": "复古墨镜",
+    "category": "general",
+    "radius": 42,
+    "color": "#324152",
+    "spriteResource": "sprites/sunglasses",
+    "spriteWebUrl": "/resources/sprites/sunglasses.png"
+  },
+  {
+    "id": "toothbrush",
+    "name": "漱口杯",
+    "category": "bedroom",
+    "radius": 41,
+    "color": "#A6DFD1",
+    "spriteResource": "sprites/toothbrush",
+    "spriteWebUrl": "/resources/sprites/toothbrush.png"
+  },
+  {
+    "id": "rubber_duck",
+    "name": "小黄鸭",
+    "category": "bedroom",
+    "radius": 42,
+    "color": "#FFD147",
+    "spriteResource": "sprites/rubber_duck",
+    "spriteWebUrl": "/resources/sprites/rubber_duck.png"
+  },
+  {
+    "id": "watering_can",
+    "name": "洒水壶",
+    "category": "living",
+    "radius": 44,
+    "color": "#6EC072",
+    "spriteResource": "sprites/watering_can",
+    "spriteWebUrl": "/resources/sprites/watering_can.png"
+  },
+  {
+    "id": "paint_palette",
+    "name": "调色盘",
+    "category": "living",
+    "radius": 45,
+    "color": "#F2C894",
+    "spriteResource": "sprites/paint_palette",
+    "spriteWebUrl": "/resources/sprites/paint_palette.png"
+  },
+  {
+    "id": "perfume",
+    "name": "香水瓶",
+    "category": "bedroom",
+    "radius": 41,
+    "color": "#F9B8D0",
+    "spriteResource": "sprites/perfume",
+    "spriteWebUrl": "/resources/sprites/perfume.png"
+  },
+  {
+    "id": "iron",
+    "name": "小熨斗",
+    "category": "bedroom",
+    "radius": 45,
+    "color": "#59B8D9",
+    "spriteResource": "sprites/iron",
+    "spriteWebUrl": "/resources/sprites/iron.png"
+  },
+  {
+    "id": "teapot",
+    "name": "陶瓷茶壶",
+    "category": "kitchen",
+    "radius": 44,
+    "color": "#EB6A5B",
+    "spriteResource": "sprites/teapot",
+    "spriteWebUrl": "/resources/sprites/teapot.png"
+  },
+  {
+    "id": "apple",
+    "name": "红苹果",
+    "category": "kitchen",
+    "radius": 40,
+    "color": "#EB5757",
+    "spriteResource": "sprites/apple",
+    "spriteWebUrl": "/resources/sprites/apple.png"
+  },
+  {
+    "id": "banana",
+    "name": "大香蕉",
+    "category": "kitchen",
+    "radius": 43,
+    "color": "#FFD147",
+    "spriteResource": "sprites/banana",
+    "spriteWebUrl": "/resources/sprites/banana.png"
+  },
+  {
+    "id": "milk_carton",
+    "name": "鲜牛奶",
+    "category": "kitchen",
+    "radius": 41,
+    "color": "#59B8D9",
+    "spriteResource": "sprites/milk_carton",
+    "spriteWebUrl": "/resources/sprites/milk_carton.png"
+  },
+  {
+    "id": "jam_jar",
+    "name": "草莓酱",
+    "category": "kitchen",
+    "radius": 40,
+    "color": "#E85A70",
+    "spriteResource": "sprites/jam_jar",
+    "spriteWebUrl": "/resources/sprites/jam_jar.png"
+  },
+  {
+    "id": "backpack",
+    "name": "双肩包",
+    "category": "general",
+    "radius": 46,
+    "color": "#59B8D9",
+    "spriteResource": "sprites/backpack",
+    "spriteWebUrl": "/resources/sprites/backpack.png"
+  },
+  {
+    "id": "watch",
+    "name": "复古手表",
+    "category": "general",
+    "radius": 39,
+    "color": "#D48B56",
+    "spriteResource": "sprites/watch",
+    "spriteWebUrl": "/resources/sprites/watch.png"
+  },
+  {
+    "id": "candle",
+    "name": "香薰蜡烛",
+    "category": "living",
+    "radius": 41,
+    "color": "#FFF3DC",
+    "spriteResource": "sprites/candle",
+    "spriteWebUrl": "/resources/sprites/candle.png"
+  },
+  {
+    "id": "keychain",
+    "name": "钥匙串",
+    "category": "general",
+    "radius": 40,
+    "color": "#FFD147",
+    "spriteResource": "sprites/keychain",
+    "spriteWebUrl": "/resources/sprites/keychain.png"
+  }
+]
