@@ -1,3 +1,4 @@
+import { evaluateExternalShare, type ShareRequest, type ShareResult, type ShareVerifyReason } from '../core/shareVerifier';
 import type { AdPlacement, SaveData } from '../core/types';
 import {
   DEFAULT_SAVE_DATA,
@@ -7,6 +8,7 @@ import {
 } from './IPlatformAdapter';
 
 const STORAGE_KEY = 'tidy_home_tt_save_v1';
+const SHARE_CONFIRMATION_TIMEOUT_MS = 60_000;
 
 declare const tt: any;
 
@@ -129,13 +131,32 @@ export class DouyinAdapter implements IPlatformAdapter {
     }
   }
 
-  shareResult(title: string): void {
-    try {
-      if (typeof tt !== 'undefined' && typeof tt.shareAppMessage === 'function') {
-        tt.shareAppMessage({ title });
-      }
-    } catch {
-      // Ignore
+  async shareResult(req: string | ShareRequest): Promise<ShareResult> {
+    const normalized: ShareRequest = typeof req === 'string' ? { title: req } : req;
+    if (typeof tt === 'undefined' || typeof tt.shareAppMessage !== 'function') {
+      return evaluateExternalShare('unavailable');
     }
+
+    return new Promise<ShareResult>((resolve) => {
+      const timer = setTimeout(() => finish('unconfirmed'), SHARE_CONFIRMATION_TIMEOUT_MS);
+      const finish = (reason: ShareVerifyReason) => {
+        clearTimeout(timer);
+        resolve(evaluateExternalShare(reason));
+      };
+
+      try {
+        tt.shareAppMessage({
+          channel: '',
+          title: normalized.title,
+          query: normalized.query,
+          imageUrl: normalized.imageUrl,
+          success: () => finish('sdk_confirmed'),
+          fail: (error?: { errNo?: number }) => finish(error?.errNo === 10502 ? 'cancelled' : 'failed'),
+          cancel: () => finish('cancelled'),
+        });
+      } catch {
+        finish('failed');
+      }
+    });
   }
 }

@@ -31,7 +31,7 @@ function sharedResourcesPlugin(): Plugin {
     closeBundle() {
       const outResources = path.resolve(__dirname, 'dist/resources');
       if (fs.existsSync(RESOURCES_DIR)) {
-        fs.cpSync(RESOURCES_DIR, outResources, { recursive: true });
+        fs.cpSync(RESOURCES_DIR, outResources, { recursive: true, filter: (src) => !src.endsWith('.meta') });
       }
     },
   };
@@ -44,6 +44,7 @@ export default defineConfig({
     alias: {
       '@core': path.resolve(PROJECT_ROOT, 'src/core'),
       '@platform': path.resolve(PROJECT_ROOT, 'src/platform'),
+      '@shared': path.resolve(PROJECT_ROOT, 'src/shared'),
     },
   },
   server: {

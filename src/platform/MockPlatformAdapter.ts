@@ -1,3 +1,4 @@
+import { evaluateExternalShare, type ShareRequest, type ShareResult } from '../core/shareVerifier';
 import type { AdPlacement, SaveData } from '../core/types';
 import {
   DEFAULT_SAVE_DATA,
@@ -9,14 +10,20 @@ import {
 const STORAGE_KEY = 'tidy_home_save_v1';
 
 export type MockAdOverlayHandler = (placement: AdPlacement) => Promise<boolean>;
+export type MockShareHandler = (req: ShareRequest) => Promise<ShareResult>;
 
 export class MockPlatformAdapter implements IPlatformAdapter {
   readonly platformName = 'web-mock' as const;
   private memoryFallback: SaveData = normalizeSaveData(DEFAULT_SAVE_DATA);
   private adOverlayHandler: MockAdOverlayHandler | null = null;
+  private shareHandler: MockShareHandler | null = null;
 
   setAdOverlayHandler(handler: MockAdOverlayHandler | null): void {
     this.adOverlayHandler = handler;
+  }
+
+  setShareHandler(handler: MockShareHandler | null): void {
+    this.shareHandler = handler;
   }
 
   loadSave(): SaveData {
@@ -79,7 +86,11 @@ export class MockPlatformAdapter implements IPlatformAdapter {
     }
   }
 
-  shareResult(): void {
-    // Handled visually in MVP preview
+  async shareResult(req: string | ShareRequest): Promise<ShareResult> {
+    const normalized: ShareRequest = typeof req === 'string' ? { title: req } : req;
+    if (this.shareHandler) {
+      return this.shareHandler(normalized);
+    }
+    return evaluateExternalShare('unavailable');
   }
 }

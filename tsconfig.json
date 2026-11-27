@@ -7,15 +7,11 @@
     "skipLibCheck": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
     "paths": {
-      "@core/*": ["src/core/*"],
-      "@platform/*": ["src/platform/*"]
+      "@core/*": ["./src/core/*"],
+      "@platform/*": ["./src/platform/*"],
+      "@shared/*": ["./src/shared/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "preview-web/src/**/*.ts",
-    "tests/**/*.ts"
-  ]
+  "include": ["src/**/*.ts", "preview-web/src/**/*.ts", "tests/**/*.ts"]
 }

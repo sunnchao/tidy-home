@@ -2,8 +2,14 @@
   "living_room": {
     "id": "living_room",
     "name": "暖阳客厅",
-    "bgResource": "rooms/living_room",
-    "bgWebUrl": "/resources/rooms/living_room.png",
+    "bgResource": "rooms/living_room.jpg",
+    "bgWebUrl": "/resources/rooms/living_room.jpg",
+    "accentColor": "#FC9651",
+    "accentDeep": "#E87630",
+    "softBg": "#FFF6E8",
+    "badgeBg": "#FFE8CC",
+    "unlockLevel": 1,
+    "tagline": "暖阳杏金 · 活力起居室",
     "paletteTint": {
       "morning": {
         "overlayColor": "#FFF7E8",
@@ -373,376 +379,1142 @@
       }
     ]
   },
-  "bedroom": {
-    "id": "bedroom",
-    "name": "治愈卧室",
-    "bgResource": "rooms/bedroom",
-    "bgWebUrl": "/resources/rooms/bedroom.png",
+  "bathroom": {
+    "id": "bathroom",
+    "name": "泡沫浴室",
+    "bgResource": "rooms/bathroom.jpg",
+    "bgWebUrl": "/resources/rooms/bathroom.jpg",
+    "accentColor": "#2BB3C0",
+    "accentDeep": "#1A8A98",
+    "softBg": "#EAF9FB",
+    "badgeBg": "#D0F2F6",
+    "unlockLevel": 2,
+    "tagline": "海岸水蓝 · 泡泡疗愈间",
     "paletteTint": {
       "morning": {
-        "overlayColor": "#FFF7E8",
+        "overlayColor": "#E0F9FF",
         "overlayOpacity": 0,
-        "label": "清晨阳光"
+        "label": "清新晨浴"
       },
       "sunset": {
-        "overlayColor": "#FF8C52",
-        "overlayOpacity": 0.22,
-        "label": "日落晚霞"
+        "overlayColor": "#FF9E6D",
+        "overlayOpacity": 0.2,
+        "label": "暖光气泡"
       },
       "night": {
-        "overlayColor": "#1C2342",
-        "overlayOpacity": 0.38,
-        "label": "晚安月光"
+        "overlayColor": "#162C47",
+        "overlayOpacity": 0.36,
+        "label": "月光spa"
       }
     },
     "host": {
-      "role": "周末大扫除小美的卧室",
+      "role": "精致女孩糖糖的泡泡浴室",
       "openings": [
-        "早起找耳环把床铺和梳妆台翻乱了，快来帮我分类收进箱子！",
-        "周日大作战：把被窝和毛绒地毯恢复成干净暖窝！",
-        "主子半夜跑进卧室踩奶，还顺手扒乱了我的化妆品！"
+        "刚泡完泡泡浴，洗发水、小黄鸭和浴巾全摊在地上啦，快来整理!",
+        "浴缸边和洗漱台堆满瓶瓶罐罐，放大画面看仔细再打包哟～",
+        "橘猫跑来玩水把浴球和搓澡花球扒得到处都是!"
       ],
       "victories": [
-        "哇，床单平平整整的，今晚肯定能睡个超香的好觉！",
-        "地毯软绵绵的没有一点杂物，治愈感满分！",
-        "梳妆台和床头柜都亮堂起来啦！"
+        "哇！海蓝色瓷砖亮晶晶的，整间浴室像海岛度假酒店!",
+        "洗漱台干干净净，小黄鸭也能舒舒服服排队休息啦!",
+        "太解压了，这清爽的薄荷地垫看着心情就满分!"
       ]
     },
     "anchors": [
       {
-        "id": "br_win_1",
-        "x": 0.2,
+        "id": "ba_win_1",
+        "x": 0.16,
+        "y": 0.44,
+        "zone": "window",
+        "scale": 0.78,
+        "capacity": 3
+      },
+      {
+        "id": "ba_win_2",
+        "x": 0.25,
         "y": 0.43,
         "zone": "window",
         "scale": 0.78,
         "capacity": 3
       },
       {
-        "id": "br_win_2",
-        "x": 0.31,
-        "y": 0.42,
+        "id": "ba_win_3",
+        "x": 0.33,
+        "y": 0.41,
         "zone": "window",
         "scale": 0.78,
         "capacity": 3
       },
       {
-        "id": "br_win_3",
-        "x": 0.41,
-        "y": 0.44,
-        "zone": "window",
-        "scale": 0.8,
-        "capacity": 3
-      },
-      {
-        "id": "br_bed_1",
-        "x": 0.55,
-        "y": 0.45,
-        "zone": "bed",
+        "id": "ba_tub_1",
+        "x": 0.15,
+        "y": 0.51,
+        "zone": "tub",
         "scale": 0.86,
         "capacity": 4
       },
       {
-        "id": "br_bed_2",
+        "id": "ba_tub_2",
+        "x": 0.25,
+        "y": 0.49,
+        "zone": "tub",
+        "scale": 0.86,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_3",
+        "x": 0.36,
+        "y": 0.47,
+        "zone": "tub",
+        "scale": 0.86,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_4",
+        "x": 0.48,
+        "y": 0.47,
+        "zone": "tub",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_5",
+        "x": 0.21,
+        "y": 0.54,
+        "zone": "tub",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_6",
+        "x": 0.33,
+        "y": 0.52,
+        "zone": "tub",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_7",
+        "x": 0.44,
+        "y": 0.51,
+        "zone": "tub",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_8",
+        "x": 0.52,
+        "y": 0.54,
+        "zone": "tub",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_9",
+        "x": 0.16,
+        "y": 0.59,
+        "zone": "tub",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_10",
+        "x": 0.28,
+        "y": 0.58,
+        "zone": "tub",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "ba_tub_11",
+        "x": 0.4,
+        "y": 0.57,
+        "zone": "tub",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "ba_van_1",
         "x": 0.67,
         "y": 0.47,
-        "zone": "bed",
+        "zone": "vanity",
+        "scale": 0.84,
+        "capacity": 4
+      },
+      {
+        "id": "ba_van_2",
+        "x": 0.76,
+        "y": 0.49,
+        "zone": "vanity",
         "scale": 0.86,
         "capacity": 4
       },
       {
-        "id": "br_bed_3",
-        "x": 0.45,
-        "y": 0.49,
-        "zone": "bed",
-        "scale": 0.88,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_4",
-        "x": 0.57,
-        "y": 0.5,
-        "zone": "bed",
-        "scale": 0.9,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_5",
-        "x": 0.69,
-        "y": 0.52,
-        "zone": "bed",
-        "scale": 0.92,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_6",
-        "x": 0.34,
-        "y": 0.52,
-        "zone": "bed",
-        "scale": 0.92,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_7",
-        "x": 0.46,
-        "y": 0.54,
-        "zone": "bed",
-        "scale": 0.94,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_8",
-        "x": 0.58,
-        "y": 0.56,
-        "zone": "bed",
-        "scale": 0.94,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_9",
-        "x": 0.69,
-        "y": 0.57,
-        "zone": "bed",
-        "scale": 0.94,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_10",
-        "x": 0.25,
-        "y": 0.55,
-        "zone": "bed",
-        "scale": 0.92,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_11",
-        "x": 0.36,
-        "y": 0.58,
-        "zone": "bed",
-        "scale": 0.96,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_12",
-        "x": 0.49,
-        "y": 0.6,
-        "zone": "bed",
-        "scale": 0.96,
-        "capacity": 4
-      },
-      {
-        "id": "br_bed_13",
-        "x": 0.61,
-        "y": 0.6,
-        "zone": "bed",
-        "scale": 0.96,
-        "capacity": 4
-      },
-      {
-        "id": "br_stand_1",
-        "x": 0.11,
-        "y": 0.53,
-        "zone": "nightstand",
-        "scale": 0.88,
-        "capacity": 3
-      },
-      {
-        "id": "br_stand_2",
-        "x": 0.16,
-        "y": 0.58,
-        "zone": "nightstand",
-        "scale": 0.9,
-        "capacity": 3
-      },
-      {
-        "id": "br_stand_3",
-        "x": 0.12,
-        "y": 0.64,
-        "zone": "floor_left",
-        "scale": 0.92,
-        "capacity": 3
-      },
-      {
-        "id": "br_desk_1",
-        "x": 0.81,
+        "id": "ba_van_3",
+        "x": 0.86,
         "y": 0.51,
         "zone": "vanity",
+        "scale": 0.86,
+        "capacity": 4
+      },
+      {
+        "id": "ba_van_4",
+        "x": 0.65,
+        "y": 0.53,
+        "zone": "vanity",
         "scale": 0.88,
         "capacity": 4
       },
       {
-        "id": "br_desk_2",
-        "x": 0.89,
-        "y": 0.53,
+        "id": "ba_van_5",
+        "x": 0.75,
+        "y": 0.55,
         "zone": "vanity",
-        "scale": 0.88,
-        "capacity": 3
+        "scale": 0.9,
+        "capacity": 4
       },
       {
-        "id": "br_desk_3",
+        "id": "ba_van_6",
         "x": 0.85,
         "y": 0.57,
         "zone": "vanity",
         "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "ba_van_7",
+        "x": 0.72,
+        "y": 0.61,
+        "zone": "vanity",
+        "scale": 0.92,
         "capacity": 3
       },
       {
-        "id": "br_stool",
-        "x": 0.86,
-        "y": 0.63,
+        "id": "ba_van_8",
+        "x": 0.83,
+        "y": 0.62,
         "zone": "vanity",
+        "scale": 0.92,
+        "capacity": 3
+      },
+      {
+        "id": "ba_mat_1",
+        "x": 0.35,
+        "y": 0.64,
+        "zone": "bathmat",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_2",
+        "x": 0.46,
+        "y": 0.63,
+        "zone": "bathmat",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_3",
+        "x": 0.57,
+        "y": 0.65,
+        "zone": "bathmat",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_4",
+        "x": 0.34,
+        "y": 0.69,
+        "zone": "bathmat",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_5",
+        "x": 0.45,
+        "y": 0.68,
+        "zone": "bathmat",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_6",
+        "x": 0.56,
+        "y": 0.7,
+        "zone": "bathmat",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_7",
+        "x": 0.66,
+        "y": 0.69,
+        "zone": "bathmat",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_8",
+        "x": 0.41,
+        "y": 0.73,
+        "zone": "bathmat",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_9",
+        "x": 0.52,
+        "y": 0.74,
+        "zone": "bathmat",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "ba_mat_10",
+        "x": 0.63,
+        "y": 0.74,
+        "zone": "bathmat",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "ba_flr_1",
+        "x": 0.13,
+        "y": 0.66,
+        "zone": "floor",
         "scale": 0.94,
         "capacity": 3
       },
       {
-        "id": "br_rug_1",
-        "x": 0.24,
+        "id": "ba_flr_2",
+        "x": 0.23,
+        "y": 0.67,
+        "zone": "floor",
+        "scale": 0.96,
+        "capacity": 4
+      },
+      {
+        "id": "ba_flr_3",
+        "x": 0.14,
+        "y": 0.73,
+        "zone": "floor",
+        "scale": 1,
+        "capacity": 3
+      },
+      {
+        "id": "ba_flr_4",
+        "x": 0.25,
+        "y": 0.74,
+        "zone": "floor",
+        "scale": 1,
+        "capacity": 3
+      },
+      {
+        "id": "ba_flr_5",
+        "x": 0.74,
+        "y": 0.66,
+        "zone": "floor",
+        "scale": 0.96,
+        "capacity": 3
+      },
+      {
+        "id": "ba_flr_6",
+        "x": 0.87,
+        "y": 0.67,
+        "zone": "floor",
+        "scale": 0.96,
+        "capacity": 3
+      },
+      {
+        "id": "ba_flr_7",
+        "x": 0.75,
+        "y": 0.73,
+        "zone": "floor",
+        "scale": 1,
+        "capacity": 3
+      },
+      {
+        "id": "ba_flr_8",
+        "x": 0.87,
+        "y": 0.74,
+        "zone": "floor",
+        "scale": 1,
+        "capacity": 3
+      },
+      {
+        "id": "ba_flr_9",
+        "x": 0.58,
+        "y": 0.59,
+        "zone": "floor",
+        "scale": 0.92,
+        "capacity": 3
+      },
+      {
+        "id": "ba_flr_10",
+        "x": 0.27,
+        "y": 0.63,
+        "zone": "floor",
+        "scale": 0.94,
+        "capacity": 3
+      }
+    ]
+  },
+  "study": {
+    "id": "study",
+    "name": "森林画室",
+    "bgResource": "rooms/study.jpg",
+    "bgWebUrl": "/resources/rooms/study.jpg",
+    "accentColor": "#3E9B6E",
+    "accentDeep": "#2A7552",
+    "softBg": "#EDF8F2",
+    "badgeBg": "#D4F0E0",
+    "unlockLevel": 3,
+    "tagline": "翡翠森林 · 星空手账室",
+    "paletteTint": {
+      "morning": {
+        "overlayColor": "#EAFFF2",
+        "overlayOpacity": 0,
+        "label": "林间微风"
+      },
+      "sunset": {
+        "overlayColor": "#FF8E53",
+        "overlayOpacity": 0.18,
+        "label": "暮色书香"
+      },
+      "night": {
+        "overlayColor": "#131D3A",
+        "overlayOpacity": 0.3,
+        "label": "星空夜读"
+      }
+    },
+    "host": {
+      "role": "插画师木木的森林画室",
+      "openings": [
+        "画桌和地毯堆满画笔和手账本啦！帮我把森林画室收拾整齐吧～",
+        "画桌和绿地毯上全是大大小小的文具工具，仔细分辨可别拿错哦!",
+        "橘猫把调色盘和地球仪蹭到地下了，快帮我收进打包箱!"
+      ],
+      "victories": [
+        "灯亮起来的感觉真棒！画室重新变成灵感满满的秘密基地!",
+        "每支钢笔和胶带都整整齐齐，明天又能画出超棒的插画!",
+        "翡翠地毯干干净净，星光透过拱窗照进来太治愈啦!"
+      ]
+    },
+    "anchors": [
+      {
+        "id": "st_win_1",
+        "x": 0.17,
+        "y": 0.44,
+        "zone": "window",
+        "scale": 0.78,
+        "capacity": 3
+      },
+      {
+        "id": "st_win_2",
+        "x": 0.26,
+        "y": 0.43,
+        "zone": "window",
+        "scale": 0.78,
+        "capacity": 3
+      },
+      {
+        "id": "st_win_3",
+        "x": 0.34,
+        "y": 0.41,
+        "zone": "window",
+        "scale": 0.78,
+        "capacity": 3
+      },
+      {
+        "id": "st_desk_1",
+        "x": 0.14,
+        "y": 0.52,
+        "zone": "desk",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_2",
+        "x": 0.25,
+        "y": 0.5,
+        "zone": "desk",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_3",
+        "x": 0.36,
+        "y": 0.47,
+        "zone": "desk",
+        "scale": 0.86,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_4",
+        "x": 0.47,
+        "y": 0.44,
+        "zone": "desk",
+        "scale": 0.84,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_5",
+        "x": 0.2,
+        "y": 0.56,
+        "zone": "desk",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_6",
+        "x": 0.31,
+        "y": 0.54,
+        "zone": "desk",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_7",
+        "x": 0.42,
+        "y": 0.51,
+        "zone": "desk",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_8",
+        "x": 0.53,
+        "y": 0.49,
+        "zone": "desk",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_9",
+        "x": 0.27,
+        "y": 0.6,
+        "zone": "desk",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_10",
+        "x": 0.38,
+        "y": 0.58,
+        "zone": "desk",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_11",
+        "x": 0.49,
+        "y": 0.55,
+        "zone": "desk",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "st_desk_12",
+        "x": 0.58,
+        "y": 0.53,
+        "zone": "desk",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "st_easel_1",
+        "x": 0.68,
+        "y": 0.46,
+        "zone": "easel",
+        "scale": 0.84,
+        "capacity": 3
+      },
+      {
+        "id": "st_easel_2",
+        "x": 0.78,
+        "y": 0.49,
+        "zone": "easel",
+        "scale": 0.86,
+        "capacity": 3
+      },
+      {
+        "id": "st_easel_3",
+        "x": 0.87,
+        "y": 0.51,
+        "zone": "easel",
+        "scale": 0.86,
+        "capacity": 3
+      },
+      {
+        "id": "st_easel_4",
+        "x": 0.74,
+        "y": 0.55,
+        "zone": "easel",
+        "scale": 0.88,
+        "capacity": 3
+      },
+      {
+        "id": "st_easel_5",
+        "x": 0.85,
+        "y": 0.58,
+        "zone": "easel",
+        "scale": 0.9,
+        "capacity": 3
+      },
+      {
+        "id": "st_rug_1",
+        "x": 0.46,
         "y": 0.64,
+        "zone": "rug",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "st_rug_2",
+        "x": 0.57,
+        "y": 0.62,
+        "zone": "rug",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "st_rug_3",
+        "x": 0.67,
+        "y": 0.63,
+        "zone": "rug",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "st_rug_4",
+        "x": 0.36,
+        "y": 0.68,
         "zone": "rug",
         "scale": 0.96,
         "capacity": 4
       },
       {
-        "id": "br_rug_2",
-        "x": 0.35,
-        "y": 0.66,
+        "id": "st_rug_5",
+        "x": 0.48,
+        "y": 0.69,
         "zone": "rug",
         "scale": 0.98,
         "capacity": 4
       },
       {
-        "id": "br_rug_3",
-        "x": 0.47,
-        "y": 0.65,
-        "zone": "rug",
-        "scale": 0.98,
-        "capacity": 4
-      },
-      {
-        "id": "br_rug_4",
+        "id": "st_rug_6",
         "x": 0.59,
-        "y": 0.65,
-        "zone": "rug",
-        "scale": 0.98,
-        "capacity": 4
-      },
-      {
-        "id": "br_rug_5",
-        "x": 0.71,
-        "y": 0.66,
-        "zone": "rug",
-        "scale": 0.98,
-        "capacity": 4
-      },
-      {
-        "id": "br_rug_6",
-        "x": 0.79,
         "y": 0.68,
         "zone": "rug",
         "scale": 0.98,
         "capacity": 4
       },
       {
-        "id": "br_rug_7",
-        "x": 0.21,
-        "y": 0.7,
+        "id": "st_rug_7",
+        "x": 0.7,
+        "y": 0.69,
         "zone": "rug",
-        "scale": 1,
+        "scale": 0.98,
         "capacity": 4
       },
       {
-        "id": "br_rug_8",
-        "x": 0.32,
-        "y": 0.72,
+        "id": "st_rug_8",
+        "x": 0.81,
+        "y": 0.68,
         "zone": "rug",
-        "scale": 1,
+        "scale": 0.98,
         "capacity": 4
       },
       {
-        "id": "br_rug_9",
-        "x": 0.44,
-        "y": 0.71,
-        "zone": "rug",
-        "scale": 1,
-        "capacity": 4
-      },
-      {
-        "id": "br_rug_10",
-        "x": 0.56,
-        "y": 0.71,
-        "zone": "rug",
-        "scale": 1,
-        "capacity": 4
-      },
-      {
-        "id": "br_rug_11",
-        "x": 0.68,
-        "y": 0.71,
-        "zone": "rug",
-        "scale": 1,
-        "capacity": 4
-      },
-      {
-        "id": "br_rug_12",
-        "x": 0.26,
-        "y": 0.75,
-        "zone": "rug",
-        "scale": 1.02,
-        "capacity": 3
-      },
-      {
-        "id": "br_rug_13",
-        "x": 0.4,
-        "y": 0.75,
-        "zone": "rug",
-        "scale": 1.02,
-        "capacity": 3
-      },
-      {
-        "id": "br_rug_14",
-        "x": 0.52,
-        "y": 0.75,
-        "zone": "rug",
-        "scale": 1.02,
-        "capacity": 3
-      },
-      {
-        "id": "br_rug_15",
-        "x": 0.65,
-        "y": 0.75,
-        "zone": "rug",
-        "scale": 1.02,
-        "capacity": 3
-      },
-      {
-        "id": "br_floor_1",
-        "x": 0.13,
+        "id": "st_rug_9",
+        "x": 0.28,
         "y": 0.73,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "st_rug_10",
+        "x": 0.4,
+        "y": 0.74,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "st_rug_11",
+        "x": 0.52,
+        "y": 0.74,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "st_rug_12",
+        "x": 0.64,
+        "y": 0.74,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "st_rug_13",
+        "x": 0.76,
+        "y": 0.73,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "st_flr_1",
+        "x": 0.13,
+        "y": 0.64,
+        "zone": "floor",
+        "scale": 0.94,
+        "capacity": 3
+      },
+      {
+        "id": "st_flr_2",
+        "x": 0.22,
+        "y": 0.66,
+        "zone": "floor",
+        "scale": 0.96,
+        "capacity": 3
+      },
+      {
+        "id": "st_flr_3",
+        "x": 0.13,
+        "y": 0.72,
+        "zone": "floor",
+        "scale": 1,
+        "capacity": 3
+      },
+      {
+        "id": "st_flr_4",
+        "x": 0.19,
+        "y": 0.75,
         "zone": "floor",
         "scale": 1.02,
         "capacity": 3
       },
       {
-        "id": "br_floor_2",
+        "id": "st_flr_5",
+        "x": 0.87,
+        "y": 0.64,
+        "zone": "floor",
+        "scale": 0.96,
+        "capacity": 3
+      },
+      {
+        "id": "st_flr_6",
+        "x": 0.87,
+        "y": 0.73,
+        "zone": "floor",
+        "scale": 1,
+        "capacity": 3
+      },
+      {
+        "id": "st_flr_7",
+        "x": 0.62,
+        "y": 0.57,
+        "zone": "floor",
+        "scale": 0.9,
+        "capacity": 3
+      },
+      {
+        "id": "st_flr_8",
+        "x": 0.33,
+        "y": 0.63,
+        "zone": "floor",
+        "scale": 0.94,
+        "capacity": 3
+      },
+      {
+        "id": "st_flr_9",
+        "x": 0.44,
+        "y": 0.6,
+        "zone": "floor",
+        "scale": 0.92,
+        "capacity": 3
+      }
+    ]
+  },
+  "cafe": {
+    "id": "cafe",
+    "name": "樱花甜品屋",
+    "bgResource": "rooms/cafe.jpg",
+    "bgWebUrl": "/resources/rooms/cafe.jpg",
+    "accentColor": "#E85D88",
+    "accentDeep": "#C9416B",
+    "softBg": "#FFF0F5",
+    "badgeBg": "#FFD9E6",
+    "unlockLevel": 4,
+    "tagline": "樱粉薰衣草 · 甜点露台",
+    "paletteTint": {
+      "morning": {
+        "overlayColor": "#FFF0F5",
+        "overlayOpacity": 0,
+        "label": "樱花午茶"
+      },
+      "sunset": {
+        "overlayColor": "#FF85A1",
+        "overlayOpacity": 0.2,
+        "label": "草莓晚霞"
+      },
+      "night": {
+        "overlayColor": "#251D44",
+        "overlayOpacity": 0.34,
+        "label": "夜樱露台"
+      }
+    },
+    "host": {
+      "role": "甜品店主理人桃桃的露台店",
+      "openings": [
+        "早市刚出炉的马卡龙、牛角包和奶茶全摆满大理石吧台啦，快按单打包!",
+        "本关是双倍金币惊喜局，闪光金色甜点记得优先收入囊中哦!",
+        "窗外樱花飘进店里了，把圆桌和格子地毯收拾得漂漂亮亮迎接客人吧!"
+      ],
+      "victories": [
+        "太香甜了！大理石吧台一尘不染，客人们肯定拍爆朋友圈!",
+        "甜品礼盒全部打包完毕，今天的金币收益也赚翻啦!",
+        "连格子地毯都焕然一新，樱花季营业大成功!"
+      ]
+    },
+    "anchors": [
+      {
+        "id": "cf_win_1",
+        "x": 0.14,
+        "y": 0.49,
+        "zone": "window",
+        "scale": 0.8,
+        "capacity": 3
+      },
+      {
+        "id": "cf_win_2",
+        "x": 0.25,
+        "y": 0.47,
+        "zone": "window",
+        "scale": 0.78,
+        "capacity": 3
+      },
+      {
+        "id": "cf_win_3",
+        "x": 0.35,
+        "y": 0.44,
+        "zone": "window",
+        "scale": 0.78,
+        "capacity": 3
+      },
+      {
+        "id": "cf_cnt_1",
+        "x": 0.45,
+        "y": 0.41,
+        "zone": "counter",
+        "scale": 0.8,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_2",
+        "x": 0.56,
+        "y": 0.4,
+        "zone": "counter",
+        "scale": 0.8,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_3",
+        "x": 0.68,
+        "y": 0.4,
+        "zone": "counter",
+        "scale": 0.8,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_4",
+        "x": 0.79,
+        "y": 0.42,
+        "zone": "counter",
+        "scale": 0.82,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_5",
+        "x": 0.48,
+        "y": 0.46,
+        "zone": "counter",
+        "scale": 0.84,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_6",
+        "x": 0.6,
+        "y": 0.45,
+        "zone": "counter",
+        "scale": 0.84,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_7",
+        "x": 0.72,
+        "y": 0.47,
+        "zone": "counter",
+        "scale": 0.86,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_8",
+        "x": 0.84,
+        "y": 0.48,
+        "zone": "counter",
+        "scale": 0.86,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_9",
+        "x": 0.56,
+        "y": 0.51,
+        "zone": "counter",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_10",
+        "x": 0.68,
+        "y": 0.52,
+        "zone": "counter",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "cf_cnt_11",
+        "x": 0.81,
+        "y": 0.53,
+        "zone": "counter",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "cf_chr_1",
+        "x": 0.31,
+        "y": 0.54,
+        "zone": "chair",
+        "scale": 0.88,
+        "capacity": 3
+      },
+      {
+        "id": "cf_chr_2",
+        "x": 0.64,
+        "y": 0.63,
+        "zone": "chair",
+        "scale": 0.94,
+        "capacity": 3
+      },
+      {
+        "id": "cf_tbl_1",
+        "x": 0.42,
+        "y": 0.56,
+        "zone": "bistro_table",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "cf_tbl_2",
+        "x": 0.51,
+        "y": 0.56,
+        "zone": "bistro_table",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "cf_tbl_3",
+        "x": 0.4,
+        "y": 0.6,
+        "zone": "bistro_table",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "cf_tbl_4",
+        "x": 0.49,
+        "y": 0.6,
+        "zone": "bistro_table",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "cf_tbl_5",
+        "x": 0.58,
+        "y": 0.59,
+        "zone": "bistro_table",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "cf_tbl_6",
+        "x": 0.45,
+        "y": 0.64,
+        "zone": "bistro_table",
+        "scale": 0.96,
+        "capacity": 4
+      },
+      {
+        "id": "cf_tbl_7",
+        "x": 0.54,
+        "y": 0.65,
+        "zone": "bistro_table",
+        "scale": 0.96,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_1",
+        "x": 0.16,
+        "y": 0.63,
+        "zone": "rug",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_2",
+        "x": 0.27,
+        "y": 0.63,
+        "zone": "rug",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_3",
+        "x": 0.72,
+        "y": 0.61,
+        "zone": "rug",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_4",
+        "x": 0.82,
+        "y": 0.62,
+        "zone": "rug",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_5",
+        "x": 0.22,
+        "y": 0.68,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_6",
+        "x": 0.34,
+        "y": 0.69,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_7",
+        "x": 0.46,
+        "y": 0.7,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_8",
+        "x": 0.58,
+        "y": 0.7,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_9",
+        "x": 0.7,
+        "y": 0.69,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_10",
+        "x": 0.8,
+        "y": 0.69,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_11",
+        "x": 0.32,
+        "y": 0.74,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_12",
+        "x": 0.44,
+        "y": 0.74,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_13",
+        "x": 0.56,
+        "y": 0.75,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "cf_rug_14",
+        "x": 0.68,
+        "y": 0.74,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "cf_flr_1",
+        "x": 0.13,
+        "y": 0.7,
+        "zone": "floor",
+        "scale": 0.98,
+        "capacity": 3
+      },
+      {
+        "id": "cf_flr_2",
+        "x": 0.2,
+        "y": 0.75,
+        "zone": "floor",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "cf_flr_3",
+        "x": 0.88,
+        "y": 0.67,
+        "zone": "floor",
+        "scale": 0.98,
+        "capacity": 3
+      },
+      {
+        "id": "cf_flr_4",
+        "x": 0.85,
+        "y": 0.74,
+        "zone": "floor",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "cf_flr_5",
         "x": 0.77,
         "y": 0.75,
         "zone": "floor",
         "scale": 1.02,
-        "capacity": 3
-      },
-      {
-        "id": "br_floor_3",
-        "x": 0.88,
-        "y": 0.72,
-        "zone": "floor",
-        "scale": 1.02,
-        "capacity": 3
-      },
-      {
-        "id": "br_floor_4",
-        "x": 0.19,
-        "y": 0.62,
-        "zone": "floor",
-        "scale": 0.94,
         "capacity": 3
       }
     ]
@@ -750,8 +1522,14 @@
   "kitchen": {
     "id": "kitchen",
     "name": "温馨厨房",
-    "bgResource": "rooms/kitchen",
-    "bgWebUrl": "/resources/rooms/kitchen.png",
+    "bgResource": "rooms/kitchen.jpg",
+    "bgWebUrl": "/resources/rooms/kitchen.jpg",
+    "accentColor": "#F28C38",
+    "accentDeep": "#D46D1B",
+    "softBg": "#FFF5EB",
+    "badgeBg": "#FFE3C8",
+    "unlockLevel": 5,
+    "tagline": "青柠木调 · 烘焙料理台",
     "paletteTint": {
       "morning": {
         "overlayColor": "#FFF7E8",
@@ -760,7 +1538,7 @@
       },
       "sunset": {
         "overlayColor": "#FF904D",
-        "overlayOpacity": 0.2,
+        "overlayOpacity": 0.22,
         "label": "傍晚备餐"
       },
       "night": {
@@ -1117,6 +1895,386 @@
         "y": 0.49,
         "zone": "floor",
         "scale": 0.86,
+        "capacity": 3
+      }
+    ]
+  },
+  "bedroom": {
+    "id": "bedroom",
+    "name": "梦幻卧室",
+    "bgResource": "rooms/bedroom.jpg",
+    "bgWebUrl": "/resources/rooms/bedroom.jpg",
+    "accentColor": "#8368C7",
+    "accentDeep": "#6348A8",
+    "softBg": "#F4F0FC",
+    "badgeBg": "#E5DCFA",
+    "unlockLevel": 6,
+    "tagline": "星夜紫罗兰 · 治愈暖窝",
+    "paletteTint": {
+      "morning": {
+        "overlayColor": "#E8DCFF",
+        "overlayOpacity": 0.14,
+        "label": "丁香柔光"
+      },
+      "sunset": {
+        "overlayColor": "#D972A8",
+        "overlayOpacity": 0.22,
+        "label": "玫瑰暮色"
+      },
+      "night": {
+        "overlayColor": "#1C2342",
+        "overlayOpacity": 0.38,
+        "label": "晚安月光"
+      }
+    },
+    "host": {
+      "role": "周末大扫除小美的卧室",
+      "openings": [
+        "早起找耳环把床铺和梳妆台翻乱了，快来帮我分类收进箱子！",
+        "周日大作战：把被窝和毛绒地毯恢复成干净暖窝！",
+        "主子半夜跑进卧室踩奶，还顺手扒乱了我的毛衣和抱枕！"
+      ],
+      "victories": [
+        "哇，床单平平整整的，今晚肯定能睡个超香的好觉！",
+        "地毯软绵绵的没有一点杂物，治愈感满分！",
+        "梳妆台和床头柜都亮堂起来啦！"
+      ]
+    },
+    "anchors": [
+      {
+        "id": "br_win_1",
+        "x": 0.2,
+        "y": 0.43,
+        "zone": "window",
+        "scale": 0.78,
+        "capacity": 3
+      },
+      {
+        "id": "br_win_2",
+        "x": 0.31,
+        "y": 0.42,
+        "zone": "window",
+        "scale": 0.78,
+        "capacity": 3
+      },
+      {
+        "id": "br_win_3",
+        "x": 0.41,
+        "y": 0.44,
+        "zone": "window",
+        "scale": 0.8,
+        "capacity": 3
+      },
+      {
+        "id": "br_bed_1",
+        "x": 0.55,
+        "y": 0.45,
+        "zone": "bed",
+        "scale": 0.86,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_2",
+        "x": 0.67,
+        "y": 0.47,
+        "zone": "bed",
+        "scale": 0.86,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_3",
+        "x": 0.45,
+        "y": 0.49,
+        "zone": "bed",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_4",
+        "x": 0.57,
+        "y": 0.5,
+        "zone": "bed",
+        "scale": 0.9,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_5",
+        "x": 0.69,
+        "y": 0.52,
+        "zone": "bed",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_6",
+        "x": 0.34,
+        "y": 0.52,
+        "zone": "bed",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_7",
+        "x": 0.46,
+        "y": 0.54,
+        "zone": "bed",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_8",
+        "x": 0.58,
+        "y": 0.56,
+        "zone": "bed",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_9",
+        "x": 0.69,
+        "y": 0.57,
+        "zone": "bed",
+        "scale": 0.94,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_10",
+        "x": 0.25,
+        "y": 0.55,
+        "zone": "bed",
+        "scale": 0.92,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_11",
+        "x": 0.36,
+        "y": 0.58,
+        "zone": "bed",
+        "scale": 0.96,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_12",
+        "x": 0.49,
+        "y": 0.6,
+        "zone": "bed",
+        "scale": 0.96,
+        "capacity": 4
+      },
+      {
+        "id": "br_bed_13",
+        "x": 0.61,
+        "y": 0.6,
+        "zone": "bed",
+        "scale": 0.96,
+        "capacity": 4
+      },
+      {
+        "id": "br_stand_1",
+        "x": 0.11,
+        "y": 0.53,
+        "zone": "nightstand",
+        "scale": 0.88,
+        "capacity": 3
+      },
+      {
+        "id": "br_stand_2",
+        "x": 0.16,
+        "y": 0.58,
+        "zone": "nightstand",
+        "scale": 0.9,
+        "capacity": 3
+      },
+      {
+        "id": "br_stand_3",
+        "x": 0.12,
+        "y": 0.64,
+        "zone": "floor_left",
+        "scale": 0.92,
+        "capacity": 3
+      },
+      {
+        "id": "br_desk_1",
+        "x": 0.81,
+        "y": 0.51,
+        "zone": "vanity",
+        "scale": 0.88,
+        "capacity": 4
+      },
+      {
+        "id": "br_desk_2",
+        "x": 0.89,
+        "y": 0.53,
+        "zone": "vanity",
+        "scale": 0.88,
+        "capacity": 3
+      },
+      {
+        "id": "br_desk_3",
+        "x": 0.85,
+        "y": 0.57,
+        "zone": "vanity",
+        "scale": 0.9,
+        "capacity": 3
+      },
+      {
+        "id": "br_stool",
+        "x": 0.86,
+        "y": 0.63,
+        "zone": "vanity",
+        "scale": 0.94,
+        "capacity": 3
+      },
+      {
+        "id": "br_rug_1",
+        "x": 0.24,
+        "y": 0.64,
+        "zone": "rug",
+        "scale": 0.96,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_2",
+        "x": 0.35,
+        "y": 0.66,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_3",
+        "x": 0.47,
+        "y": 0.65,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_4",
+        "x": 0.59,
+        "y": 0.65,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_5",
+        "x": 0.71,
+        "y": 0.66,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_6",
+        "x": 0.79,
+        "y": 0.68,
+        "zone": "rug",
+        "scale": 0.98,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_7",
+        "x": 0.21,
+        "y": 0.7,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_8",
+        "x": 0.32,
+        "y": 0.72,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_9",
+        "x": 0.44,
+        "y": 0.71,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_10",
+        "x": 0.56,
+        "y": 0.71,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_11",
+        "x": 0.68,
+        "y": 0.71,
+        "zone": "rug",
+        "scale": 1,
+        "capacity": 4
+      },
+      {
+        "id": "br_rug_12",
+        "x": 0.26,
+        "y": 0.75,
+        "zone": "rug",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "br_rug_13",
+        "x": 0.4,
+        "y": 0.75,
+        "zone": "rug",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "br_rug_14",
+        "x": 0.52,
+        "y": 0.75,
+        "zone": "rug",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "br_rug_15",
+        "x": 0.65,
+        "y": 0.75,
+        "zone": "rug",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "br_floor_1",
+        "x": 0.13,
+        "y": 0.73,
+        "zone": "floor",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "br_floor_2",
+        "x": 0.77,
+        "y": 0.75,
+        "zone": "floor",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "br_floor_3",
+        "x": 0.88,
+        "y": 0.72,
+        "zone": "floor",
+        "scale": 1.02,
+        "capacity": 3
+      },
+      {
+        "id": "br_floor_4",
+        "x": 0.19,
+        "y": 0.62,
+        "zone": "floor",
+        "scale": 0.94,
         "capacity": 3
       }
     ]

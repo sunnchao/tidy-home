@@ -1,4 +1,4 @@
-import { ITEM_BY_ID, ROOM_CATALOG } from './catalogs';
+import { getItemSpritePool, ITEM_BY_ID, ROOM_CATALOG } from './catalogs';
 import { BOX_SPREAD_OFFSETS, distPx, generateLevel, type GenerateLevelOptions, recomputeBlockers } from './levelGenerator';
 import { SeededRng } from './rng';
 import type {
@@ -13,6 +13,7 @@ import type {
   SessionSnapshot,
   TrayItem,
 } from './types';
+import { GOLDEN_ITEM_COINS, ORDER_COMPLETE_COINS } from './userProfile';
 
 export interface GameSessionOptions {
   initialBoosters?: Record<BoosterType, number>;
@@ -38,6 +39,7 @@ export class GameSession {
   private highlightedBlockerUids: string[] = [];
   private elapsedSec = 0;
   private starsEarned = 0;
+  private coinsEarnedInSession = 0;
   private rng: SeededRng;
   private listeners: Array<(event: GameEvent) => void> = [];
 
@@ -68,15 +70,19 @@ export class GameSession {
       x: 0.78,
       y: 0.72,
       cooldownSec: level.petCooldownSec,
-      nextActionInSec: level.petEnabled ? Math.min(12, level.petCooldownSec * 0.6) : 9999,
+      nextActionInSec: level.petEnabled && level.catMischiefEnabled ? Math.min(12, level.petCooldownSec * 0.6) : 9999,
       petsReceived: 0,
       petsNeeded: 2,
       freeGiftsUsedInLevel: 0,
-      maxFreeGiftsPerLevel: 1,
+      maxFreeGiftsPerLevel: 5,
       adGiftsUsedInLevel: 0,
       maxAdGiftsPerLevel: 1,
-      bubbleText: level.petEnabled ? '喵呜~ 本局可免费撸我帮忙 1 次哦' : null,
-      bubbleTimerSec: level.petEnabled ? 3.5 : 0,
+      bubbleText: level.petEnabled
+        ? level.catMischiefEnabled
+          ? '喵呜~ 喂猫条摸我2下，帮你找藏起来的物品!'
+          : '喵~ 摸我2下喂猫条，我帮你精准找收纳物品!'
+        : null,
+      bubbleTimerSec: level.petEnabled ? 3.8 : 0,
       targetItemUid: null,
     };
 
@@ -122,6 +128,26 @@ export class GameSession {
     };
   }
 
+  isPlaying(): boolean {
+    return this.status === 'playing';
+  }
+
+  getLoopDigest(): {
+    status: 'playing' | 'failed_tray_full' | 'won';
+    petMood: PetCatState['mood'];
+    petBubbleText: string | null;
+    feverActive: boolean;
+    comboCount: number;
+  } {
+    return {
+      status: this.status,
+      petMood: this.pet.mood,
+      petBubbleText: this.pet.bubbleText,
+      feverActive: this.feverActive,
+      comboCount: this.comboCount,
+    };
+  }
+
   getSnapshot(): SessionSnapshot {
     const deliveredCount = this.items.filter((it) => it.state === 'delivered').length;
     return {
@@ -161,7 +187,36 @@ export class GameSession {
       highlightedBlockerUids: [...this.highlightedBlockerUids],
       elapsedSec: this.elapsedSec,
       starsEarned: this.starsEarned,
+      coinMultiplier: this.level.coinMultiplier,
+      isMilestoneLevel: this.level.isMilestoneLevel,
+      levelBadge: this.level.levelBadge,
+      coinsEarnedInSession: this.coinsEarnedInSession,
     };
+  }
+
+  private alignItemPoseToAnchor(item: BoardItemInstance, anchor: RoomAnchor): void {
+    const pool = getItemSpritePool(item.itemId);
+    const pref = anchor.preferredPose;
+    let chosenIdx = -1;
+    if (pref) {
+      chosenIdx = pool.findIndex((p) => p.pose === pref);
+    }
+    if (chosenIdx < 0) {
+      chosenIdx = pool.findIndex((p) => p.pose === 'flat' || p.pose === 'tuck_corner');
+    }
+    if (chosenIdx < 0) chosenIdx = 0;
+    const chosen = pool[chosenIdx];
+    item.variantIndex = chosenIdx;
+    item.pose = chosen.pose;
+    item.aspectRatio = chosen.aspectRatio;
+    const isOriented =
+      chosen.pose === 'drape_sofa_back' ||
+      chosen.pose === 'drape_sofa_edge' ||
+      chosen.pose === 'drape_table_edge' ||
+      chosen.pose === 'lean_upright';
+    item.rotation = isOriented
+      ? (anchor.fixedRotation ?? 0) + this.rng.float(-5, 5)
+      : (anchor.fixedRotation ?? 0) + this.rng.float(-(anchor.rotationJitter ?? 15), anchor.rotationJitter ?? 15);
   }
 
   private findMatchingSlot(itemId: string): OrderSlotState | null {
@@ -178,10 +233,17 @@ export class GameSession {
     return null;
   }
 
+  private awardSessionCoins(amount: number, reason: 'golden_item' | 'order_completed', meta?: Record<string, unknown>): void {
+    const coins = Math.max(0, Math.floor(amount * this.level.coinMultiplier));
+    if (coins <= 0) return;
+    this.coinsEarnedInSession += coins;
+    this.emit('coin_earned', { amount: coins, reason, ...meta });
+  }
+
   private deliverItemToSlot(
     item: BoardItemInstance,
     slot: OrderSlotState,
-    meta: { fromX: number; fromY: number; fromTray: boolean }
+    meta: { fromX: number; fromY: number; fromTray: boolean; fromTrayIndex?: number }
   ): void {
     item.state = 'delivered';
     slot.collectedCount += 1;
@@ -189,13 +251,26 @@ export class GameSession {
     this.emit('item_delivered', {
       uid: item.uid,
       itemId: item.itemId,
+      variantIndex: item.variantIndex ?? 0,
       slotIndex: slot.slotIndex,
+      orderId: slot.order?.id ?? '',
       fromX: meta.fromX,
       fromY: meta.fromY,
       fromTray: meta.fromTray,
+      fromTrayIndex: meta.fromTrayIndex,
+      rotation: item.rotation,
       collectedCount: slot.collectedCount,
       requiredCount: slot.order?.requiredCount ?? 0,
     });
+
+    if (item.isGolden) {
+      item.isGolden = false;
+      this.awardSessionCoins(GOLDEN_ITEM_COINS, 'golden_item', {
+        uid: item.uid,
+        x: meta.fromX,
+        y: meta.fromY,
+      });
+    }
 
     if (slot.order && slot.collectedCount >= slot.order.requiredCount) {
       const completedOrder = slot.order;
@@ -204,6 +279,10 @@ export class GameSession {
         slotIndex: slot.slotIndex,
         orderId: completedOrder.id,
         itemId: completedOrder.itemId,
+        requiredCount: completedOrder.requiredCount,
+      });
+      this.awardSessionCoins(ORDER_COMPLETE_COINS, 'order_completed', {
+        slotIndex: slot.slotIndex,
       });
 
       const next = this.pendingOrders.shift() ?? null;
@@ -214,6 +293,7 @@ export class GameSession {
           slotIndex: slot.slotIndex,
           orderId: next.id,
           itemId: next.itemId,
+          requiredCount: next.requiredCount,
         });
       }
     }
@@ -237,6 +317,7 @@ export class GameSession {
               fromX: 0.5,
               fromY: 0.82,
               fromTray: true,
+              fromTrayIndex: i,
             });
           }
           progressed = true;
@@ -254,28 +335,6 @@ export class GameSession {
       this.feverActive = true;
       this.feverRemainingSec = 6.0;
       this.emit('fever_started', { comboCount: this.comboCount });
-
-      // Fever bonus: automatically magnet-deliver 1 matching item from board
-      const activeIds = new Set(
-        this.orderSlots
-          .filter((s) => s.unlocked && s.order && s.collectedCount < s.order.requiredCount)
-          .map((s) => s.order!.itemId)
-      );
-      const bonusTarget = this.items.find(
-        (it) => it.state === 'on_board' && activeIds.has(it.itemId)
-      );
-      if (bonusTarget) {
-        const slot = this.findMatchingSlot(bonusTarget.itemId);
-        if (slot) {
-          this.deliverItemToSlot(bonusTarget, slot, {
-            fromX: bonusTarget.x,
-            fromY: bonusTarget.y,
-            fromTray: false,
-          });
-          this.drainTrayMatches();
-          recomputeBlockers(this.items, this.boxes);
-        }
-      }
     }
   }
 
@@ -283,11 +342,14 @@ export class GameSession {
     const allDelivered = this.items.every((it) => it.state === 'delivered');
     if (allDelivered && this.tray.length === 0) {
       this.status = 'won';
-      this.starsEarned = this.elapsedSec <= 95 ? 3 : this.elapsedSec <= 165 ? 2 : 1;
+      const par3 = Math.max(95, Math.round(this.level.totalItems * 1.6));
+      const par2 = Math.round(par3 * 1.7);
+      this.starsEarned = this.elapsedSec <= par3 ? 3 : this.elapsedSec <= par2 ? 2 : 1;
       this.emit('level_won', {
         levelNumber: this.level.levelNumber,
         starsEarned: this.starsEarned,
         elapsedSec: this.elapsedSec,
+        coinsEarnedInSession: this.coinsEarnedInSession,
       });
       return;
     }
@@ -335,6 +397,7 @@ export class GameSession {
     this.tray.push({
       uid: item.uid,
       itemId: item.itemId,
+      variantIndex: item.variantIndex,
       fromAnchorId: item.anchorId,
       fromLayer: item.layer,
       fromX: item.x,
@@ -350,9 +413,11 @@ export class GameSession {
     this.emit('item_to_tray', {
       uid: item.uid,
       itemId: item.itemId,
+      variantIndex: item.variantIndex ?? 0,
       trayIndex: this.tray.length - 1,
       fromX: item.x,
       fromY: item.y,
+      rotation: item.rotation,
     });
 
     recomputeBlockers(this.items, this.boxes);
@@ -382,19 +447,25 @@ export class GameSession {
       const it = this.items.find((x) => x.uid === uid);
       if (!it) return;
       const anchor: RoomAnchor = targetAnchors[idx % targetAnchors.length];
+      const off = BOX_SPREAD_OFFSETS[idx % BOX_SPREAD_OFFSETS.length];
+      const spawnX = Math.min(0.9, Math.max(0.1, anchor.x + off.dx));
+      const spawnY = Math.min(0.76, Math.max(0.41, anchor.y + off.dy));
       let topLayer = 0;
       for (const other of this.items) {
-        if (other.state === 'on_board' && other.anchorId === anchor.id) {
+        if (
+          other.state === 'on_board' &&
+          (other.anchorId === anchor.id || distPx(other.x, other.y, spawnX, spawnY) < 95)
+        ) {
           topLayer = Math.max(topLayer, other.layer + 1);
         }
       }
-      const off = BOX_SPREAD_OFFSETS[idx % BOX_SPREAD_OFFSETS.length];
       it.state = 'on_board';
       it.hiddenByBoxId = null;
       it.anchorId = anchor.id;
       it.layer = topLayer;
-      it.x = Math.min(0.9, Math.max(0.1, anchor.x + off.dx));
-      it.y = Math.min(0.76, Math.max(0.41, anchor.y + off.dy));
+      it.x = spawnX;
+      it.y = spawnY;
+      this.alignItemPoseToAnchor(it, anchor);
       it.scale = anchor.scale;
       it.radius = ITEM_BY_ID[it.itemId].radius * anchor.scale;
       spawned.push(uid);
@@ -421,6 +492,85 @@ export class GameSession {
     }
     this.checkWinOrTrayFull();
     return true;
+  }
+
+  /**
+   * Reward-assisted quick-fill ("装满"): completes all remaining items for an active order box
+   * by pulling matching items directly from tray, board, or unopened boxes while keeping item state clean.
+   */
+  fillOrderByReward(slotIndex: number): { filled: boolean; deliveredCount: number; itemId?: string } {
+    if (this.status !== 'playing') {
+      return { filled: false, deliveredCount: 0 };
+    }
+    const slot = this.orderSlots[slotIndex];
+    if (!slot || !slot.unlocked || !slot.order) {
+      return { filled: false, deliveredCount: 0 };
+    }
+    const targetOrder = slot.order;
+    const needed = Math.max(0, targetOrder.requiredCount - slot.collectedCount);
+    if (needed <= 0) {
+      return { filled: false, deliveredCount: 0 };
+    }
+
+    let deliveredCount = 0;
+    while (deliveredCount < needed && slot.order === targetOrder) {
+      const trayIdx = this.tray.findIndex((t) => t.itemId === targetOrder.itemId);
+      if (trayIdx >= 0) {
+        const trayItem = this.tray.splice(trayIdx, 1)[0];
+        const boardRef = this.items.find((it) => it.uid === trayItem.uid);
+        if (boardRef) {
+          this.deliverItemToSlot(boardRef, slot, {
+            fromX: 0.5,
+            fromY: 0.82,
+            fromTray: true,
+            fromTrayIndex: trayIdx,
+          });
+          deliveredCount += 1;
+          continue;
+        }
+      }
+
+      const candidate =
+        this.items.find(
+          (it) => it.state === 'on_board' && it.itemId === targetOrder.itemId
+        ) ??
+        this.items.find(
+          (it) => it.state === 'hidden_in_box' && it.itemId === targetOrder.itemId
+        );
+      if (!candidate) break;
+
+      if (candidate.state === 'hidden_in_box' && candidate.hiddenByBoxId) {
+        const box = this.boxes.find((b) => b.uid === candidate.hiddenByBoxId);
+        if (box) {
+          box.containedItemUids = box.containedItemUids.filter((u) => u !== candidate.uid);
+        }
+        candidate.hiddenByBoxId = null;
+      }
+
+      this.deliverItemToSlot(candidate, slot, {
+        fromX: candidate.x,
+        fromY: candidate.y,
+        fromTray: false,
+      });
+      deliveredCount += 1;
+    }
+
+    if (deliveredCount === 0) {
+      return { filled: false, deliveredCount: 0 };
+    }
+
+    this.highlightedItemUid = null;
+    this.highlightedBlockerUids = [];
+    this.drainTrayMatches();
+    recomputeBlockers(this.items, this.boxes);
+    this.emit('order_reward_filled', {
+      slotIndex,
+      orderId: targetOrder.id,
+      itemId: targetOrder.itemId,
+      deliveredCount,
+    });
+    this.checkWinOrTrayFull();
+    return { filled: true, deliveredCount, itemId: targetOrder.itemId };
   }
 
   unlockAdTraySlot(): boolean {
@@ -454,6 +604,7 @@ export class GameSession {
       boardRef.layer = topLayer;
       boardRef.x = anchor.x;
       boardRef.y = anchor.y;
+      this.alignItemPoseToAnchor(boardRef, anchor);
       boardRef.scale = anchor.scale;
       boardRef.radius = ITEM_BY_ID[boardRef.itemId].radius * anchor.scale;
     }
@@ -472,7 +623,6 @@ export class GameSession {
 
     if (type === 'magnet') {
       let delivered = 0;
-      // Can pull directly from board (ignoring occlusion) or even hidden inside unopened boxes
       for (let pass = 0; pass < 2; pass++) {
         const candidate = this.items.find((it) => {
           if (pass === 0 && it.state !== 'on_board') return false;
@@ -506,6 +656,7 @@ export class GameSession {
 
     if (type === 'undo') {
       if (this.tray.length === 0) return { ok: false, reason: 'tray_empty' };
+      const fromTrayIndex = this.tray.length - 1;
       const last = this.tray.pop()!;
       const item = this.items.find((it) => it.uid === last.uid);
       if (!item) return { ok: false, reason: 'missing_item' };
@@ -525,7 +676,16 @@ export class GameSession {
       item.scale = last.fromScale;
       this.boosters.undo -= 1;
       recomputeBlockers(this.items, this.boxes);
-      this.emit('booster_used', { type: 'undo', uid: item.uid });
+      this.emit('booster_used', {
+        type: 'undo',
+        uid: item.uid,
+        itemId: item.itemId,
+        variantIndex: item.variantIndex ?? 0,
+        fromTrayIndex,
+        toX: item.x,
+        toY: item.y,
+        toRotation: item.rotation,
+      });
       return { ok: true };
     }
 
@@ -549,7 +709,6 @@ export class GameSession {
         return { ok: true };
       }
 
-      // Otherwise find an occluded matching item and highlight the top-most unblocked blocker (or closed box)
       const blockedMatch = this.items.find(
         (it) => it.state === 'on_board' && this.findMatchingSlot(it.itemId) !== null
       );
@@ -591,7 +750,6 @@ export class GameSession {
       );
       const targetAnchors = usableAnchors.length > 0 ? usableAnchors : room.anchors;
 
-      // Put non-active items lower and active order items higher
       boardItems.sort((a, b) => {
         const aMatch = this.findMatchingSlot(a.itemId) ? 1 : 0;
         const bMatch = this.findMatchingSlot(b.itemId) ? 1 : 0;
@@ -607,7 +765,7 @@ export class GameSession {
         it.layer = layer;
         it.x = Math.min(0.9, Math.max(0.1, anchor.x + this.rng.float(-0.018, 0.018)));
         it.y = Math.min(0.76, Math.max(0.4, anchor.y + this.rng.float(-0.012, 0.012) - layer * 0.008));
-        it.rotation = this.rng.float(-16, 16);
+        this.alignItemPoseToAnchor(it, anchor);
         it.scale = anchor.scale;
         it.radius = ITEM_BY_ID[it.itemId].radius * anchor.scale;
       });
@@ -665,14 +823,14 @@ export class GameSession {
     }
 
     if (this.pet.freeGiftsUsedInLevel >= this.pet.maxFreeGiftsPerLevel) {
-      this.pet.bubbleText = '本局免费次数用完啦~ 看广告加喂一根猫条吗?';
+      this.pet.bubbleText = '本局猫条帮忙次数用完啦，点我看看还能怎么帮忙。';
       this.pet.bubbleTimerSec = 3.5;
       this.emit('cat_need_ad', { reason: 'level_cap' });
       return { status: 'need_ad_level_cap', treatsSpent: 0 };
     }
 
     if (availableTreats <= 0) {
-      this.pet.bubbleText = '没有猫条啦~ 看广告或去每日领取补充吧!';
+      this.pet.bubbleText = '没有猫条啦，去猫条小铺看看吧！';
       this.pet.bubbleTimerSec = 3.5;
       this.emit('cat_need_ad', { reason: 'no_treats' });
       return { status: 'need_ad_no_treats', treatsSpent: 0 };
@@ -682,7 +840,7 @@ export class GameSession {
     this.emit('cat_petted', { petsReceived: this.pet.petsReceived, petsNeeded: this.pet.petsNeeded });
 
     if (this.pet.petsReceived < this.pet.petsNeeded) {
-      this.pet.bubbleText = '喵~ 再摸一下下就帮你叼宝贝!';
+      this.pet.bubbleText = '喵~ 再摸一下就替你找出需要收纳的物品!';
       this.pet.bubbleTimerSec = 3.0;
       return { status: 'petted', treatsSpent: 0 };
     }
@@ -711,12 +869,18 @@ export class GameSession {
     this.pet.nextActionInSec = this.pet.cooldownSec;
     this.pet.targetItemUid = null;
 
-    // Cat fetches 1 active order item from the board (or falls back to hidden in box if needed)
+    recomputeBlockers(this.items, this.boxes);
+    // Smart finder: prefer occluded active order item first, then unblocked on_board, then hidden_in_box
     const activeTarget =
+      this.items.find(
+        (it) => it.state === 'on_board' && it.blockedBy.length > 0 && this.findMatchingSlot(it.itemId) !== null
+      ) ??
       this.items.find((it) => it.state === 'on_board' && this.findMatchingSlot(it.itemId) !== null) ??
       this.items.find((it) => it.state === 'hidden_in_box' && this.findMatchingSlot(it.itemId) !== null);
 
     if (activeTarget) {
+      const foundX = activeTarget.x;
+      const foundY = activeTarget.y;
       if (activeTarget.state === 'hidden_in_box' && activeTarget.hiddenByBoxId) {
         const box = this.boxes.find((b) => b.uid === activeTarget.hiddenByBoxId);
         if (box) {
@@ -725,17 +889,24 @@ export class GameSession {
         activeTarget.hiddenByBoxId = null;
       }
       const slot = this.findMatchingSlot(activeTarget.itemId)!;
-      this.pet.bubbleText = `呼噜噜~ 给你叼来「${ITEM_BY_ID[activeTarget.itemId].name}」!`;
+      const def = ITEM_BY_ID[activeTarget.itemId];
+      this.pet.bubbleText = `呼噜噜~ 替你找到「${def.name}」并收进箱子啦!`;
       this.pet.bubbleTimerSec = 3.5;
       this.deliverItemToSlot(activeTarget, slot, {
-        fromX: this.pet.x,
-        fromY: this.pet.y - 0.04,
+        fromX: foundX,
+        fromY: foundY,
         fromTray: false,
       });
       this.registerComboHit();
       this.drainTrayMatches();
       recomputeBlockers(this.items, this.boxes);
-      this.emit('cat_gift_delivered', { uid: activeTarget.uid, itemId: activeTarget.itemId });
+      this.emit('cat_gift_delivered', {
+        uid: activeTarget.uid,
+        itemId: activeTarget.itemId,
+        itemName: def.name,
+        fromX: foundX,
+        fromY: foundY,
+      });
       this.checkWinOrTrayFull();
       return activeTarget.uid;
     }
@@ -743,6 +914,16 @@ export class GameSession {
     this.pet.bubbleText = '呼噜噜~ 好舒服!';
     this.pet.bubbleTimerSec = 2.5;
     return undefined;
+  }
+
+  movePetTo(x: number, y: number): { x: number; y: number } | null {
+    if (!this.pet.enabled || this.status !== 'playing') return null;
+    const clampedX = Math.min(0.90, Math.max(0.10, Number.isFinite(x) ? x : this.pet.x));
+    const clampedY = Math.min(0.78, Math.max(0.38, Number.isFinite(y) ? y : this.pet.y));
+    this.pet.x = clampedX;
+    this.pet.y = clampedY;
+    this.emit('cat_moved', { x: clampedX, y: clampedY });
+    return { x: clampedX, y: clampedY };
   }
 
   forceCatMischief(): boolean {
@@ -759,30 +940,36 @@ export class GameSession {
 
     const chosen = this.rng.pick(candidates);
     const room = ROOM_CATALOG[this.level.theme];
-    const destAnchor = this.rng.pick(room.anchors);
+    const closedBoxAnchors = new Set(this.boxes.filter((b) => !b.opened).map((b) => b.anchorId));
+    const usableAnchors = room.anchors.filter((a) => !closedBoxAnchors.has(a.id));
+    const destAnchor = this.rng.pick(usableAnchors.length > 0 ? usableAnchors : room.anchors);
+    const nextX = Math.min(0.88, Math.max(0.12, destAnchor.x + this.rng.float(-0.02, 0.02)));
+    const nextY = Math.min(0.75, Math.max(0.42, destAnchor.y + this.rng.float(-0.015, 0.015)));
     let topLayer = 0;
     for (const other of this.items) {
-      if (other.state === 'on_board' && other.anchorId === destAnchor.id) {
+      if (
+        other.uid !== chosen.uid &&
+        other.state === 'on_board' &&
+        (other.anchorId === destAnchor.id || distPx(other.x, other.y, nextX, nextY) < 110)
+      ) {
         topLayer = Math.max(topLayer, other.layer + 1);
       }
     }
 
     chosen.anchorId = destAnchor.id;
     chosen.layer = topLayer;
-    chosen.x = Math.min(0.88, Math.max(0.12, destAnchor.x + this.rng.float(-0.02, 0.02)));
-    chosen.y = Math.min(0.75, Math.max(0.42, destAnchor.y + this.rng.float(-0.015, 0.015)));
-    chosen.rotation = this.rng.float(-22, 22);
+    chosen.x = nextX;
+    chosen.y = nextY;
+    this.alignItemPoseToAnchor(chosen, destAnchor);
     chosen.scale = destAnchor.scale;
     chosen.radius = ITEM_BY_ID[chosen.itemId].radius * destAnchor.scale;
 
     recomputeBlockers(this.items, this.boxes);
 
     this.pet.mood = 'mischief';
-    this.pet.x = Math.min(0.78, Math.max(0.22, chosen.x + 0.08));
-    this.pet.y = Math.min(0.75, Math.max(0.45, chosen.y + 0.03));
     this.pet.petsReceived = 0;
     this.pet.targetItemUid = chosen.uid;
-    this.pet.bubbleText = '喵哈哈哈！我把东西扒乱啦（摸我2次赔给你）';
+    this.pet.bubbleText = '喵哈哈哈！我把东西扒乱啦（喂猫条摸2下赔给你）';
     this.pet.bubbleTimerSec = 6.0;
     this.pet.nextActionInSec = this.pet.cooldownSec;
 
@@ -820,17 +1007,22 @@ export class GameSession {
       this.pet.bubbleTimerSec = Math.max(0, this.pet.bubbleTimerSec - dtSec);
       if (this.pet.bubbleTimerSec === 0) {
         this.pet.bubbleText = null;
-        if (this.pet.mood === 'pleased') {
+        if (this.pet.mood === 'pleased' || this.pet.mood === 'mischief') {
           this.pet.mood = 'idle';
         }
       }
     }
 
-    if (this.pet.enabled) {
+    // Corner-docked companion cat cheers periodically without silently teleporting board items
+    // (silently relocating top items previously caused buried lower items to suddenly unlock on their own).
+    if (this.pet.enabled && this.level.catMischiefEnabled) {
       this.pet.nextActionInSec -= dtSec;
       if (this.pet.nextActionInSec <= 0) {
         this.pet.nextActionInSec = this.pet.cooldownSec;
-        this.triggerCatMischief();
+        if (!this.pet.bubbleText) {
+          this.pet.bubbleText = '喵~ 找不到压在下面的物品？喂猫条摸我2下帮你叼出来!';
+          this.pet.bubbleTimerSec = 4.2;
+        }
       }
     }
   }

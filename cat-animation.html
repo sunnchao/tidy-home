@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态猫咪 - 收纳小游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc8 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(to bottom right, #f9f5ed 0%, #e8dcc8 50%, #d4c4a8 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 30px;
+        }
+
+        /* 对话框 */
+        .speech-bubble {
+            background: white;
+            border: 3px solid #333;
+            border-radius: 25px;
+            padding: 20px 25px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            position: relative;
+            line-height: 1.6;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 0 solid transparent;
+            border-top: 15px solid white;
+        }
+
+        .speech-text {
+            min-height: 1.5em;
+        }
+
+        /* 猫咪容器 */
+        .cat-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* 控制按钮 */
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 15px;
+            background: #ff9f43;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 159, 67, 0.3);
+        }
+
+        button:hover {
+            background: #ff8c2a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 159, 67, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="speech-bubble">
+            <div class="speech-text" id="speechText"></div>
+        </div>
+        <div class="cat-container">
+            <canvas id="catCanvas" width="400" height="350"></canvas>
+        </div>
+        <div class="controls">
+            <button onclick="startAnimation()">🎬 开始对话</button>
+            <button onclick="resetAnimation()">🔄 重新播放</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('catCanvas');
+        const ctx = canvas.getContext('2d');
+        const speechText = document.getElementById('speechText');
+
+        const DIALOGUE = '喵～ 今天也一起把房间收拾得干干净净吧!';
+        let animationFrameId = null;
+        let frameCount = 0;
+        let isAnimating = false;
+        let textCharIndex = 0;
+        let textShowTimer = null;
+        let canWag = true;
+        let tailWagOffset = 0;
+        let eyeBlinkTimer = 0;
+        let eyeBlinked = false;
+
+        // 猫咪参数
+        const catX = canvas.width / 2;
+        const catY = canvas.height / 2 + 20;
+        const catSize = 80;
+
+        function drawCat(tailWag = 0, blink = 0) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 保存画布状态
+            ctx.save();
+
+            // 身体（白色）
+            ctx.fillStyle = '#fff5f0';
+            ctx.beginPath();
+            ctx.ellipse(catX, catY, catSize * 0.8, catSize * 1, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            // 头部（橙色）
+            ctx.fillStyle = '#ffaa44';
+            ctx.beginPath();
+            ctx.arc(catX, catY - catSize * 0.7, catSize * 0.75, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            // 耳朵
+            const earSize = catSize * 0.4;
+            const earOffsetY = -catSize * 1.3;
+
+            // 左耳
+            ctx.fillStyle = '#ffaa44';
+            ctx.beginPath();
+            ctx.moveTo(catX - catSize * 0.35, catY + earOffsetY);
+            ctx.lineTo(catX - catSize * 0.65, catY + earOffsetY - earSize);
+            ctx.lineTo(catX - catSize * 0.25, catY + earOffsetY - earSize * 0.3);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // 左耳内部
+            ctx.fillStyle = '#ffccaa';
+            ctx.beginPath();
+            ctx.moveTo(catX - catSize * 0.35, catY + earOffsetY - 5);
+            ctx.lineTo(catX - catSize * 0.55, catY + earOffsetY - earSize * 0.8);
+            ctx.lineTo(catX - catSize * 0.3, catY + earOffsetY - earSize * 0.2);
+            ctx.closePath();
+            ctx.fill();
+
+            // 右耳
+            ctx.fillStyle = '#ffaa44';
+            ctx.beginPath();
+            ctx.moveTo(catX + catSize * 0.35, catY + earOffsetY);
+            ctx.lineTo(catX + catSize * 0.65, catY + earOffsetY - earSize);
+            ctx.lineTo(catX + catSize * 0.25, catY + earOffsetY - earSize * 0.3);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // 右耳内部
+            ctx.fillStyle = '#ffccaa';
+            ctx.beginPath();
+            ctx.moveTo(catX + catSize * 0.35, catY + earOffsetY - 5);
+            ctx.lineTo(catX + catSize * 0.55, catY + earOffsetY - earSize * 0.8);
+            ctx.lineTo(catX + catSize * 0.3, catY + earOffsetY - earSize * 0.2);
+            ctx.closePath();
+            ctx.fill();
+
+            // 条纹
+            ctx.strokeStyle = '#ff8c00';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(catX - 15, catY - catSize * 0.65);
+            ctx.lineTo(catX - 10, catY - catSize * 0.4);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(catX, catY - catSize * 0.7);
+            ctx.lineTo(catX, catY - catSize * 0.35);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(catX + 15, catY - catSize * 0.65);
+            ctx.lineTo(catX + 10, catY - catSize * 0.4);
+            ctx.stroke();
+
+            // 眼睛
+            const eyeOffsetX = catSize * 0.3;
+            const eyeOffsetY = -catSize * 0.85;
+            const eyeSize = catSize * 0.15;
+
+            // 左眼
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.ellipse(catX - eyeOffsetX, catY + eyeOffsetY, eyeSize, eyeSize * 1.3, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // 左眼瞳孔
+            if (blink < 0.5) {
+                ctx.fillStyle = '#333';
+                ctx.beginPath();
+                ctx.ellipse(catX - eyeOffsetX, catY + eyeOffsetY, eyeSize * 0.5, eyeSize * 0.7, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // 眼睛高光
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(catX - eyeOffsetX - eyeSize * 0.15, catY + eyeOffsetY - eyeSize * 0.3, eyeSize * 0.15, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                // 眼睛闭合
+                ctx.strokeStyle = '#333';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(catX - eyeOffsetX, catY + eyeOffsetY, eyeSize * 0.6, 0, Math.PI);
+                ctx.stroke();
+            }
+
+            // 右眼
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.ellipse(catX + eyeOffsetX, catY + eyeOffsetY, eyeSize, eyeSize * 1.3, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // 右眼瞳孔
+            if (blink < 0.5) {
+                ctx.fillStyle = '#333';
+                ctx.beginPath();
+                ctx.ellipse(catX + eyeOffsetX, catY + eyeOffsetY, eyeSize * 0.5, eyeSize * 0.7, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // 眼睛高光
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(catX + eyeOffsetX - eyeSize * 0.15, catY + eyeOffsetY - eyeSize * 0.3, eyeSize * 0.15, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                // 眼睛闭合
+                ctx.strokeStyle = '#333';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(catX + eyeOffsetX, catY + eyeOffsetY, eyeSize * 0.6, 0, Math.PI);
+                ctx.stroke();
+            }
+
+            // 嘴巴
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(catX, catY - catSize * 0.3, catSize * 0.15, 0, Math.PI);
+            ctx.stroke();
+
+            // 鼻子
+            ctx.fillStyle = '#ff6666';
+            ctx.beginPath();
+            ctx.ellipse(catX, catY - catSize * 0.45, catSize * 0.1, catSize * 0.12, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 胡须
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 3; i++) {
+                const offset = (i - 1) * catSize * 0.15;
+                ctx.beginPath();
+                ctx.moveTo(catX - catSize * 0.65, catY - catSize * 0.3 + offset);
+                ctx.lineTo(catX - catSize * 1.1, catY - catSize * 0.25 + offset);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(catX + catSize * 0.65, catY - catSize * 0.3 + offset);
+                ctx.lineTo(catX + catSize * 1.1, catY - catSize * 0.25 + offset);
+                ctx.stroke();
+            }
+
+            // 尾巴（会摇晃）
+            ctx.strokeStyle = '#ffaa44';
+            ctx.lineWidth = 12;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(catX + catSize * 0.5, catY + catSize * 0.6);
+
+            const tailCurve = Math.sin(tailWag) * 30;
+            ctx.bezierCurveTo(
+                catX + catSize * 0.9, catY + catSize * 0.5 + tailCurve * 0.5,
+                catX + catSize * 1.2, catY + tailCurve,
+                catX + catSize * 1.1, catY - catSize * 0.3 + tailCurve
+            );
+            ctx.stroke();
+
+            // 尾巴边框
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(catX + catSize * 0.5, catY + catSize * 0.6);
+            ctx.bezierCurveTo(
+                catX + catSize * 0.9, catY + catSize * 0.5 + tailCurve * 0.5,
+                catX + catSize * 1.2, catY + tailCurve,
+                catX + catSize * 1.1, catY - catSize * 0.3 + tailCurve
+            );
+            ctx.stroke();
+
+            // 前腿（白色）
+            ctx.fillStyle = '#fff5f0';
+            ctx.beginPath();
+            ctx.ellipse(catX - catSize * 0.4, catY + catSize * 0.9, catSize * 0.25, catSize * 0.4, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            ctx.fillStyle = '#fff5f0';
+            ctx.beginPath();
+            ctx.ellipse(catX + catSize * 0.4, catY + catSize * 0.9, catSize * 0.25, catSize * 0.4, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // 爪子
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1.5;
+            for (let leg of [catX - catSize * 0.4, catX + catSize * 0.4]) {
+                for (let i = 0; i < 4; i++) {
+                    const pawOffset = (i - 1.5) * catSize * 0.15;
+                    ctx.beginPath();
+                    ctx.moveTo(leg + pawOffset, catY + catSize * 1.1);
+                    ctx.lineTo(leg + pawOffset, catY + catSize * 1.25);
+                    ctx.stroke();
+                }
+            }
+
+            ctx.restore();
+        }
+
+        function typeText() {
+            if (textCharIndex < DIALOGUE.length) {
+                speechText.textContent = DIALOGUE.substring(0, textCharIndex + 1);
+                textCharIndex++;
+                textShowTimer = setTimeout(typeText, 80);
+            }
+        }
+
+        function animate() {
+            frameCount++;
+
+            // 尾巴摇晃
+            tailWagOffset = Math.sin(frameCount * 0.08) * Math.PI;
+
+            // 眼睛眨动
+            eyeBlinkTimer++;
+            if (eyeBlinkTimer > 180) {
+                eyeBlinked = true;
+                if (eyeBlinkTimer > 190) {
+                    eyeBlinked = false;
+                    eyeBlinkTimer = 0;
+                }
+            }
+
+            const blinkFactor = eyeBlinked ? (eyeBlinkTimer - 180) / 10 : 0;
+
+            drawCat(tailWagOffset, blinkFactor);
+
+            if (isAnimating) {
+                animationFrameId = requestAnimationFrame(animate);
+            }
+        }
+
+        function startAnimation() {
+            if (isAnimating) return;
+
+            isAnimating = true;
+            textCharIndex = 0;
+            speechText.textContent = '';
+            frameCount = 0;
+
+            animate();
+            typeText();
+        }
+
+        function resetAnimation() {
+            isAnimating = false;
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            if (textShowTimer) {
+                clearTimeout(textShowTimer);
+            }
+            textCharIndex = 0;
+            speechText.textContent = '';
+            frameCount = 0;
+            eyeBlinkTimer = 0;
+            eyeBlinked = false;
+            tailWagOffset = 0;
+            drawCat(0, 0);
+        }
+
+        // 初始化
+        resetAnimation();
+    </script>
+</body>
+</html>

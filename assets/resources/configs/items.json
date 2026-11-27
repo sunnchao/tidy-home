@@ -4,27 +4,23 @@
     "name": "手提包",
     "category": "living",
     "radius": 46,
-    "color": "#F2845C",
+    "color": "#DF6B45",
     "spriteResource": "sprites/handbag",
-    "spriteWebUrl": "/resources/sprites/handbag.png"
-  },
-  {
-    "id": "thermos",
-    "name": "保温杯",
-    "category": "general",
-    "radius": 41,
-    "color": "#59B8D9",
-    "spriteResource": "sprites/thermos",
-    "spriteWebUrl": "/resources/sprites/thermos.png"
-  },
-  {
-    "id": "teddy",
-    "name": "小熊玩偶",
-    "category": "bedroom",
-    "radius": 47,
-    "color": "#D48B56",
-    "spriteResource": "sprites/teddy",
-    "spriteWebUrl": "/resources/sprites/teddy.png"
+    "spriteWebUrl": "/resources/sprites/handbag.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/handbag_v2",
+        "spriteWebUrl": "/resources/sprites/handbag_v2.png",
+        "aspectRatio": 0.865
+      },
+      {
+        "spriteResource": "sprites/handbag_v3",
+        "spriteWebUrl": "/resources/sprites/handbag_v3.png",
+        "aspectRatio": 0.87
+      }
+    ],
+    "visualScale": 1.2,
+    "aspectRatio": 1.123
   },
   {
     "id": "ukulele",
@@ -33,61 +29,57 @@
     "radius": 47,
     "color": "#E8924C",
     "spriteResource": "sprites/ukulele",
-    "spriteWebUrl": "/resources/sprites/ukulele.png"
-  },
-  {
-    "id": "lamp",
-    "name": "小台灯",
-    "category": "bedroom",
-    "radius": 44,
-    "color": "#FFE08C",
-    "spriteResource": "sprites/lamp",
-    "spriteWebUrl": "/resources/sprites/lamp.png"
+    "spriteWebUrl": "/resources/sprites/ukulele.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/ukulele_v2",
+        "spriteWebUrl": "/resources/sprites/ukulele_v2.png",
+        "aspectRatio": 1.043
+      },
+      {
+        "spriteResource": "sprites/ukulele_lean",
+        "spriteWebUrl": "/resources/sprites/ukulele_lean.png",
+        "pose": "lean_upright",
+        "aspectRatio": 0.464
+      },
+      {
+        "spriteResource": "sprites/ukulele_lean_v2",
+        "spriteWebUrl": "/resources/sprites/ukulele_lean_v2.png",
+        "pose": "lean_upright",
+        "aspectRatio": 0.516
+      },
+      {
+        "spriteResource": "sprites/ukulele_lean_v3",
+        "spriteWebUrl": "/resources/sprites/ukulele_lean_v3.png",
+        "pose": "lean_upright",
+        "aspectRatio": 0.422
+      }
+    ],
+    "visualScale": 1.38,
+    "aspectRatio": 0.813
   },
   {
     "id": "yarn",
     "name": "毛线球",
     "category": "living",
     "radius": 42,
-    "color": "#F07394",
+    "color": "#E45280",
     "spriteResource": "sprites/yarn",
-    "spriteWebUrl": "/resources/sprites/yarn.png"
-  },
-  {
-    "id": "coffee_cup",
-    "name": "热咖啡",
-    "category": "kitchen",
-    "radius": 42,
-    "color": "#FC9651",
-    "spriteResource": "sprites/coffee_cup",
-    "spriteWebUrl": "/resources/sprites/coffee_cup.png"
-  },
-  {
-    "id": "pan",
-    "name": "煎蛋锅",
-    "category": "kitchen",
-    "radius": 47,
-    "color": "#5A636E",
-    "spriteResource": "sprites/pan",
-    "spriteWebUrl": "/resources/sprites/pan.png"
-  },
-  {
-    "id": "baguette",
-    "name": "法棍面包",
-    "category": "kitchen",
-    "radius": 45,
-    "color": "#E59C47",
-    "spriteResource": "sprites/baguette",
-    "spriteWebUrl": "/resources/sprites/baguette.png"
-  },
-  {
-    "id": "cake",
-    "name": "草莓蛋糕",
-    "category": "kitchen",
-    "radius": 44,
-    "color": "#F2859C",
-    "spriteResource": "sprites/cake",
-    "spriteWebUrl": "/resources/sprites/cake.png"
+    "spriteWebUrl": "/resources/sprites/yarn.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/yarn_v2",
+        "spriteWebUrl": "/resources/sprites/yarn_v2.png",
+        "aspectRatio": 1
+      },
+      {
+        "spriteResource": "sprites/yarn_v3",
+        "spriteWebUrl": "/resources/sprites/yarn_v3.png",
+        "aspectRatio": 0.995
+      }
+    ],
+    "visualScale": 0.88,
+    "aspectRatio": 1.021
   },
   {
     "id": "succulent",
@@ -96,223 +88,105 @@
     "radius": 42,
     "color": "#6EC072",
     "spriteResource": "sprites/succulent",
-    "spriteWebUrl": "/resources/sprites/succulent.png"
-  },
-  {
-    "id": "camera",
-    "name": "复古相机",
-    "category": "general",
-    "radius": 44,
-    "color": "#465668",
-    "spriteResource": "sprites/camera",
-    "spriteWebUrl": "/resources/sprites/camera.png"
+    "spriteWebUrl": "/resources/sprites/succulent.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/succulent_v2",
+        "spriteWebUrl": "/resources/sprites/succulent_v2.png",
+        "aspectRatio": 0.792
+      },
+      {
+        "spriteResource": "sprites/succulent_v3",
+        "spriteWebUrl": "/resources/sprites/succulent_v3.png",
+        "aspectRatio": 0.786
+      }
+    ],
+    "visualScale": 0.9,
+    "aspectRatio": 0.823
   },
   {
     "id": "headphone",
     "name": "头戴耳机",
     "category": "living",
     "radius": 46,
-    "color": "#4FA1DA",
+    "color": "#3B4C6B",
     "spriteResource": "sprites/headphone",
-    "spriteWebUrl": "/resources/sprites/headphone.png"
-  },
-  {
-    "id": "book",
-    "name": "精装画册",
-    "category": "general",
-    "radius": 44,
-    "color": "#5D87C7",
-    "spriteResource": "sprites/book",
-    "spriteWebUrl": "/resources/sprites/book.png"
-  },
-  {
-    "id": "pillow",
-    "name": "暖色抱枕",
-    "category": "bedroom",
-    "radius": 46,
-    "color": "#FFBE7B",
-    "spriteResource": "sprites/pillow",
-    "spriteWebUrl": "/resources/sprites/pillow.png"
-  },
-  {
-    "id": "slipper",
-    "name": "毛绒拖鞋",
-    "category": "bedroom",
-    "radius": 42,
-    "color": "#FC9651",
-    "spriteResource": "sprites/slipper",
-    "spriteWebUrl": "/resources/sprites/slipper.png"
+    "spriteWebUrl": "/resources/sprites/headphone.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/headphone_v2",
+        "spriteWebUrl": "/resources/sprites/headphone_v2.png",
+        "aspectRatio": 0.932
+      }
+    ],
+    "visualScale": 1,
+    "aspectRatio": 1.324
   },
   {
     "id": "umbrella",
     "name": "晴雨伞",
     "category": "living",
     "radius": 46,
-    "color": "#4FA1DA",
+    "color": "#2D9D92",
     "spriteResource": "sprites/umbrella",
-    "spriteWebUrl": "/resources/sprites/umbrella.png"
-  },
-  {
-    "id": "alarm_clock",
-    "name": "小闹钟",
-    "category": "bedroom",
-    "radius": 42,
-    "color": "#EB6A5B",
-    "spriteResource": "sprites/alarm_clock",
-    "spriteWebUrl": "/resources/sprites/alarm_clock.png"
-  },
-  {
-    "id": "hairdryer",
-    "name": "吹风机",
-    "category": "bedroom",
-    "radius": 44,
-    "color": "#FFABC9",
-    "spriteResource": "sprites/hairdryer",
-    "spriteWebUrl": "/resources/sprites/hairdryer.png"
-  },
-  {
-    "id": "skincare",
-    "name": "保湿精华",
-    "category": "bedroom",
-    "radius": 40,
-    "color": "#63C7B2",
-    "spriteResource": "sprites/skincare",
-    "spriteWebUrl": "/resources/sprites/skincare.png"
-  },
-  {
-    "id": "cat_can",
-    "name": "猫粮罐头",
-    "category": "kitchen",
-    "radius": 42,
-    "color": "#FC9651",
-    "spriteResource": "sprites/cat_can",
-    "spriteWebUrl": "/resources/sprites/cat_can.png"
+    "spriteWebUrl": "/resources/sprites/umbrella.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/umbrella_v2",
+        "spriteWebUrl": "/resources/sprites/umbrella_v2.png",
+        "aspectRatio": 0.917
+      },
+      {
+        "spriteResource": "sprites/umbrella_lean",
+        "spriteWebUrl": "/resources/sprites/umbrella_lean.png",
+        "pose": "lean_upright",
+        "aspectRatio": 0.432
+      },
+      {
+        "spriteResource": "sprites/umbrella_lean_v2",
+        "spriteWebUrl": "/resources/sprites/umbrella_lean_v2.png",
+        "pose": "lean_upright",
+        "aspectRatio": 0.443
+      }
+    ],
+    "visualScale": 1.24,
+    "aspectRatio": 0.87
   },
   {
     "id": "gamepad",
     "name": "游戏手柄",
     "category": "living",
     "radius": 46,
-    "color": "#8C7AE6",
+    "color": "#7C65E6",
     "spriteResource": "sprites/gamepad",
-    "spriteWebUrl": "/resources/sprites/gamepad.png"
-  },
-  {
-    "id": "snack_bag",
-    "name": "脆脆薯片",
-    "category": "kitchen",
-    "radius": 42,
-    "color": "#FFD147",
-    "spriteResource": "sprites/snack_bag",
-    "spriteWebUrl": "/resources/sprites/snack_bag.png"
-  },
-  {
-    "id": "cap",
-    "name": "棒球帽",
-    "category": "general",
-    "radius": 44,
-    "color": "#4FA1DA",
-    "spriteResource": "sprites/cap",
-    "spriteWebUrl": "/resources/sprites/cap.png"
+    "spriteWebUrl": "/resources/sprites/gamepad.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/gamepad_v2",
+        "spriteWebUrl": "/resources/sprites/gamepad_v2.png",
+        "aspectRatio": 1.193
+      }
+    ],
+    "visualScale": 0.96,
+    "aspectRatio": 1.5
   },
   {
     "id": "sneaker",
     "name": "帆布鞋",
     "category": "living",
     "radius": 45,
-    "color": "#59B8D9",
+    "color": "#3FA36C",
     "spriteResource": "sprites/sneaker",
-    "spriteWebUrl": "/resources/sprites/sneaker.png"
-  },
-  {
-    "id": "donut",
-    "name": "甜甜圈",
-    "category": "kitchen",
-    "radius": 42,
-    "color": "#FF8FAB",
-    "spriteResource": "sprites/donut",
-    "spriteWebUrl": "/resources/sprites/donut.png"
-  },
-  {
-    "id": "teacup",
-    "name": "抹茶杯",
-    "category": "kitchen",
-    "radius": 41,
-    "color": "#85CFA0",
-    "spriteResource": "sprites/teacup",
-    "spriteWebUrl": "/resources/sprites/teacup.png"
-  },
-  {
-    "id": "cactus",
-    "name": "仙人掌",
-    "category": "living",
-    "radius": 42,
-    "color": "#6EC072",
-    "spriteResource": "sprites/cactus",
-    "spriteWebUrl": "/resources/sprites/cactus.png"
-  },
-  {
-    "id": "notebook",
-    "name": "手账本",
-    "category": "bedroom",
-    "radius": 43,
-    "color": "#F295B2",
-    "spriteResource": "sprites/notebook",
-    "spriteWebUrl": "/resources/sprites/notebook.png"
-  },
-  {
-    "id": "kettle",
-    "name": "电水壶",
-    "category": "kitchen",
-    "radius": 45,
-    "color": "#59B8D9",
-    "spriteResource": "sprites/kettle",
-    "spriteWebUrl": "/resources/sprites/kettle.png"
-  },
-  {
-    "id": "cookie_box",
-    "name": "曲奇盒",
-    "category": "kitchen",
-    "radius": 44,
-    "color": "#7AC3EE",
-    "spriteResource": "sprites/cookie_box",
-    "spriteWebUrl": "/resources/sprites/cookie_box.png"
-  },
-  {
-    "id": "sweater",
-    "name": "折毛衣",
-    "category": "bedroom",
-    "radius": 46,
-    "color": "#F5B882",
-    "spriteResource": "sprites/sweater",
-    "spriteWebUrl": "/resources/sprites/sweater.png"
-  },
-  {
-    "id": "sunglasses",
-    "name": "复古墨镜",
-    "category": "general",
-    "radius": 42,
-    "color": "#324152",
-    "spriteResource": "sprites/sunglasses",
-    "spriteWebUrl": "/resources/sprites/sunglasses.png"
-  },
-  {
-    "id": "toothbrush",
-    "name": "漱口杯",
-    "category": "bedroom",
-    "radius": 41,
-    "color": "#A6DFD1",
-    "spriteResource": "sprites/toothbrush",
-    "spriteWebUrl": "/resources/sprites/toothbrush.png"
-  },
-  {
-    "id": "rubber_duck",
-    "name": "小黄鸭",
-    "category": "bedroom",
-    "radius": 42,
-    "color": "#FFD147",
-    "spriteResource": "sprites/rubber_duck",
-    "spriteWebUrl": "/resources/sprites/rubber_duck.png"
+    "spriteWebUrl": "/resources/sprites/sneaker.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/sneaker_v2",
+        "spriteWebUrl": "/resources/sprites/sneaker_v2.png",
+        "aspectRatio": 1.255
+      }
+    ],
+    "visualScale": 1.12,
+    "aspectRatio": 1.574
   },
   {
     "id": "watering_can",
@@ -321,97 +195,16 @@
     "radius": 44,
     "color": "#6EC072",
     "spriteResource": "sprites/watering_can",
-    "spriteWebUrl": "/resources/sprites/watering_can.png"
-  },
-  {
-    "id": "paint_palette",
-    "name": "调色盘",
-    "category": "living",
-    "radius": 45,
-    "color": "#F2C894",
-    "spriteResource": "sprites/paint_palette",
-    "spriteWebUrl": "/resources/sprites/paint_palette.png"
-  },
-  {
-    "id": "perfume",
-    "name": "香水瓶",
-    "category": "bedroom",
-    "radius": 41,
-    "color": "#F9B8D0",
-    "spriteResource": "sprites/perfume",
-    "spriteWebUrl": "/resources/sprites/perfume.png"
-  },
-  {
-    "id": "iron",
-    "name": "小熨斗",
-    "category": "bedroom",
-    "radius": 45,
-    "color": "#59B8D9",
-    "spriteResource": "sprites/iron",
-    "spriteWebUrl": "/resources/sprites/iron.png"
-  },
-  {
-    "id": "teapot",
-    "name": "陶瓷茶壶",
-    "category": "kitchen",
-    "radius": 44,
-    "color": "#EB6A5B",
-    "spriteResource": "sprites/teapot",
-    "spriteWebUrl": "/resources/sprites/teapot.png"
-  },
-  {
-    "id": "apple",
-    "name": "红苹果",
-    "category": "kitchen",
-    "radius": 40,
-    "color": "#EB5757",
-    "spriteResource": "sprites/apple",
-    "spriteWebUrl": "/resources/sprites/apple.png"
-  },
-  {
-    "id": "banana",
-    "name": "大香蕉",
-    "category": "kitchen",
-    "radius": 43,
-    "color": "#FFD147",
-    "spriteResource": "sprites/banana",
-    "spriteWebUrl": "/resources/sprites/banana.png"
-  },
-  {
-    "id": "milk_carton",
-    "name": "鲜牛奶",
-    "category": "kitchen",
-    "radius": 41,
-    "color": "#59B8D9",
-    "spriteResource": "sprites/milk_carton",
-    "spriteWebUrl": "/resources/sprites/milk_carton.png"
-  },
-  {
-    "id": "jam_jar",
-    "name": "草莓酱",
-    "category": "kitchen",
-    "radius": 40,
-    "color": "#E85A70",
-    "spriteResource": "sprites/jam_jar",
-    "spriteWebUrl": "/resources/sprites/jam_jar.png"
-  },
-  {
-    "id": "backpack",
-    "name": "双肩包",
-    "category": "general",
-    "radius": 46,
-    "color": "#59B8D9",
-    "spriteResource": "sprites/backpack",
-    "spriteWebUrl": "/resources/sprites/backpack.png"
-  },
-  {
-    "id": "watch",
-    "name": "复古手表",
-    "category": "general",
-    "radius": 39,
-    "color": "#D48B56",
-    "spriteResource": "sprites/watch",
-    "spriteWebUrl": "/resources/sprites/watch.png"
+    "spriteWebUrl": "/resources/sprites/watering_can.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/watering_can_v2",
+        "spriteWebUrl": "/resources/sprites/watering_can_v2.png",
+        "aspectRatio": 1.11
+      }
+    ],
+    "visualScale": 1.12,
+    "aspectRatio": 1.239
   },
   {
     "id": "candle",
@@ -420,7 +213,833 @@
     "radius": 41,
     "color": "#FFF3DC",
     "spriteResource": "sprites/candle",
-    "spriteWebUrl": "/resources/sprites/candle.png"
+    "spriteWebUrl": "/resources/sprites/candle.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/candle_v2",
+        "spriteWebUrl": "/resources/sprites/candle_v2.png",
+        "aspectRatio": 0.792
+      }
+    ],
+    "visualScale": 0.78,
+    "aspectRatio": 0.651
+  },
+  {
+    "id": "cap",
+    "name": "棒球帽",
+    "category": "living",
+    "radius": 44,
+    "color": "#D94B43",
+    "spriteResource": "sprites/cap",
+    "spriteWebUrl": "/resources/sprites/cap.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/cap_v2",
+        "spriteWebUrl": "/resources/sprites/cap_v2.png",
+        "aspectRatio": 1.263
+      }
+    ],
+    "visualScale": 0.98,
+    "aspectRatio": 1.362
+  },
+  {
+    "id": "backpack",
+    "name": "双肩包",
+    "category": "living",
+    "radius": 46,
+    "color": "#E5A038",
+    "spriteResource": "sprites/backpack",
+    "spriteWebUrl": "/resources/sprites/backpack.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/backpack_v2",
+        "spriteWebUrl": "/resources/sprites/backpack_v2.png",
+        "aspectRatio": 0.917
+      },
+      {
+        "spriteResource": "sprites/backpack_v3",
+        "spriteWebUrl": "/resources/sprites/backpack_v3.png",
+        "aspectRatio": 0.802
+      }
+    ],
+    "visualScale": 1.3,
+    "aspectRatio": 0.87
+  },
+  {
+    "id": "soap_bottle",
+    "name": "泡泡洗手液",
+    "category": "bathroom",
+    "radius": 42,
+    "color": "#F0B83A",
+    "spriteResource": "sprites/soap_bottle",
+    "spriteWebUrl": "/resources/sprites/soap_bottle.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/soap_bottle_v2",
+        "spriteWebUrl": "/resources/sprites/soap_bottle_v2.png",
+        "aspectRatio": 0.552
+      }
+    ],
+    "visualScale": 0.92,
+    "aspectRatio": 0.661
+  },
+  {
+    "id": "towel_roll",
+    "name": "条纹浴巾",
+    "category": "bathroom",
+    "radius": 44,
+    "color": "#EC7755",
+    "spriteResource": "sprites/towel_roll",
+    "spriteWebUrl": "/resources/sprites/towel_roll.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/towel_roll_v2",
+        "spriteWebUrl": "/resources/sprites/towel_roll_v2.png",
+        "aspectRatio": 1.171
+      },
+      {
+        "spriteResource": "sprites/towel_roll_drape",
+        "spriteWebUrl": "/resources/sprites/towel_roll_drape.png",
+        "pose": "drape_sofa_edge",
+        "aspectRatio": 0.76
+      },
+      {
+        "spriteResource": "sprites/towel_roll_drape_v2",
+        "spriteWebUrl": "/resources/sprites/towel_roll_drape_v2.png",
+        "pose": "drape_table_edge",
+        "aspectRatio": 0.833
+      }
+    ],
+    "visualScale": 1.08,
+    "aspectRatio": 1.333
+  },
+  {
+    "id": "bath_sponge",
+    "name": "搓澡花球",
+    "category": "bathroom",
+    "radius": 43,
+    "color": "#FF8FAB",
+    "spriteResource": "sprites/bath_sponge",
+    "spriteWebUrl": "/resources/sprites/bath_sponge.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/bath_sponge_v2",
+        "spriteWebUrl": "/resources/sprites/bath_sponge_v2.png",
+        "aspectRatio": 0.849
+      }
+    ],
+    "visualScale": 0.88,
+    "aspectRatio": 0.865
+  },
+  {
+    "id": "shampoo",
+    "name": "蓝莓洗发水",
+    "category": "bathroom",
+    "radius": 41,
+    "color": "#3F5EC4",
+    "spriteResource": "sprites/shampoo",
+    "spriteWebUrl": "/resources/sprites/shampoo.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/shampoo_v2",
+        "spriteWebUrl": "/resources/sprites/shampoo_v2.png",
+        "aspectRatio": 0.609
+      }
+    ],
+    "visualScale": 0.94,
+    "aspectRatio": 0.635
+  },
+  {
+    "id": "comb",
+    "name": "木质宽梳",
+    "category": "bathroom",
+    "radius": 42,
+    "color": "#E8924C",
+    "spriteResource": "sprites/comb",
+    "spriteWebUrl": "/resources/sprites/comb.png",
+    "visualScale": 0.84,
+    "aspectRatio": 1.097
+  },
+  {
+    "id": "bath_bomb",
+    "name": "泡澡浴球",
+    "category": "bathroom",
+    "radius": 42,
+    "color": "#B39DDB",
+    "spriteResource": "sprites/bath_bomb",
+    "spriteWebUrl": "/resources/sprites/bath_bomb.png",
+    "visualScale": 0.82,
+    "aspectRatio": 1
+  },
+  {
+    "id": "mirror_hand",
+    "name": "随身手镜",
+    "category": "bathroom",
+    "radius": 42,
+    "color": "#E5A93B",
+    "spriteResource": "sprites/mirror_hand",
+    "spriteWebUrl": "/resources/sprites/mirror_hand.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/mirror_hand_v2",
+        "spriteWebUrl": "/resources/sprites/mirror_hand_v2.png",
+        "aspectRatio": 0.964
+      }
+    ],
+    "visualScale": 0.96,
+    "aspectRatio": 0.708
+  },
+  {
+    "id": "bucket_wash",
+    "name": "洗漱小桶",
+    "category": "bathroom",
+    "radius": 44,
+    "color": "#EA7D4F",
+    "spriteResource": "sprites/bucket_wash",
+    "spriteWebUrl": "/resources/sprites/bucket_wash.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/bucket_wash_v2",
+        "spriteWebUrl": "/resources/sprites/bucket_wash_v2.png",
+        "aspectRatio": 0.76
+      }
+    ],
+    "visualScale": 1.14,
+    "aspectRatio": 0.911
+  },
+  {
+    "id": "rubber_duck",
+    "name": "小黄鸭",
+    "category": "bathroom",
+    "radius": 42,
+    "color": "#FFD147",
+    "spriteResource": "sprites/rubber_duck",
+    "spriteWebUrl": "/resources/sprites/rubber_duck.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/rubber_duck_v2",
+        "spriteWebUrl": "/resources/sprites/rubber_duck_v2.png",
+        "aspectRatio": 0.979
+      }
+    ],
+    "visualScale": 0.88,
+    "aspectRatio": 1.136
+  },
+  {
+    "id": "toothbrush",
+    "name": "漱口杯",
+    "category": "bathroom",
+    "radius": 41,
+    "color": "#E8D5BA",
+    "spriteResource": "sprites/toothbrush",
+    "spriteWebUrl": "/resources/sprites/toothbrush.png",
+    "visualScale": 0.88,
+    "aspectRatio": 0.583
+  },
+  {
+    "id": "hairdryer",
+    "name": "吹风机",
+    "category": "bathroom",
+    "radius": 44,
+    "color": "#FFABC9",
+    "spriteResource": "sprites/hairdryer",
+    "spriteWebUrl": "/resources/sprites/hairdryer.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/hairdryer_v2",
+        "spriteWebUrl": "/resources/sprites/hairdryer_v2.png",
+        "aspectRatio": 0.984
+      }
+    ],
+    "visualScale": 1.04,
+    "aspectRatio": 1.085
+  },
+  {
+    "id": "skincare",
+    "name": "保湿精华",
+    "category": "bathroom",
+    "radius": 40,
+    "color": "#2F9E7E",
+    "spriteResource": "sprites/skincare",
+    "spriteWebUrl": "/resources/sprites/skincare.png",
+    "visualScale": 0.8,
+    "aspectRatio": 0.448
+  },
+  {
+    "id": "perfume",
+    "name": "香水瓶",
+    "category": "bathroom",
+    "radius": 41,
+    "color": "#D982B8",
+    "spriteResource": "sprites/perfume",
+    "spriteWebUrl": "/resources/sprites/perfume.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/perfume_v2",
+        "spriteWebUrl": "/resources/sprites/perfume_v2.png",
+        "aspectRatio": 0.729
+      }
+    ],
+    "visualScale": 0.82,
+    "aspectRatio": 0.708
+  },
+  {
+    "id": "globe",
+    "name": "地球仪",
+    "category": "study",
+    "radius": 45,
+    "color": "#4FA1DA",
+    "spriteResource": "sprites/globe",
+    "spriteWebUrl": "/resources/sprites/globe.png",
+    "visualScale": 1.16,
+    "aspectRatio": 0.734
+  },
+  {
+    "id": "fountain_pen",
+    "name": "复古钢笔",
+    "category": "study",
+    "radius": 41,
+    "color": "#2F487A",
+    "spriteResource": "sprites/fountain_pen",
+    "spriteWebUrl": "/resources/sprites/fountain_pen.png",
+    "visualScale": 0.78,
+    "aspectRatio": 0.927
+  },
+  {
+    "id": "magnifying_glass",
+    "name": "放大镜",
+    "category": "study",
+    "radius": 43,
+    "color": "#FFD147",
+    "spriteResource": "sprites/magnifying_glass",
+    "spriteWebUrl": "/resources/sprites/magnifying_glass.png",
+    "visualScale": 0.88,
+    "aspectRatio": 0.969
+  },
+  {
+    "id": "paint_tube",
+    "name": "水彩颜料",
+    "category": "study",
+    "radius": 42,
+    "color": "#E85A70",
+    "spriteResource": "sprites/paint_tube",
+    "spriteWebUrl": "/resources/sprites/paint_tube.png",
+    "visualScale": 0.82,
+    "aspectRatio": 1.067
+  },
+  {
+    "id": "scissors",
+    "name": "手工剪刀",
+    "category": "study",
+    "radius": 43,
+    "color": "#EB6A5B",
+    "spriteResource": "sprites/scissors",
+    "spriteWebUrl": "/resources/sprites/scissors.png",
+    "visualScale": 0.86,
+    "aspectRatio": 1.021
+  },
+  {
+    "id": "tape_roll",
+    "name": "和纸胶带",
+    "category": "study",
+    "radius": 42,
+    "color": "#5BC070",
+    "spriteResource": "sprites/tape_roll",
+    "spriteWebUrl": "/resources/sprites/tape_roll.png",
+    "visualScale": 0.76,
+    "aspectRatio": 1.185
+  },
+  {
+    "id": "calculator",
+    "name": "复古计算器",
+    "category": "study",
+    "radius": 43,
+    "color": "#85CFA0",
+    "spriteResource": "sprites/calculator",
+    "spriteWebUrl": "/resources/sprites/calculator.png",
+    "visualScale": 0.92,
+    "aspectRatio": 1.116
+  },
+  {
+    "id": "telescope",
+    "name": "天文望远镜",
+    "category": "study",
+    "radius": 45,
+    "color": "#3E5C9A",
+    "spriteResource": "sprites/telescope",
+    "spriteWebUrl": "/resources/sprites/telescope.png",
+    "visualScale": 1.22,
+    "aspectRatio": 1.016
+  },
+  {
+    "id": "book",
+    "name": "精装画册",
+    "category": "study",
+    "radius": 44,
+    "color": "#9E3B4B",
+    "spriteResource": "sprites/book",
+    "spriteWebUrl": "/resources/sprites/book.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/book_v2",
+        "spriteWebUrl": "/resources/sprites/book_v2.png",
+        "aspectRatio": 1.143
+      },
+      {
+        "spriteResource": "sprites/book_open",
+        "spriteWebUrl": "/resources/sprites/book_open.png",
+        "pose": "flat",
+        "aspectRatio": 1.352
+      },
+      {
+        "spriteResource": "sprites/book_open_v2",
+        "spriteWebUrl": "/resources/sprites/book_open_v2.png",
+        "pose": "flat",
+        "aspectRatio": 1.263
+      }
+    ],
+    "visualScale": 1.24,
+    "aspectRatio": 0.875
+  },
+  {
+    "id": "notebook",
+    "name": "手账本",
+    "category": "study",
+    "radius": 43,
+    "color": "#F27D9B",
+    "spriteResource": "sprites/notebook",
+    "spriteWebUrl": "/resources/sprites/notebook.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/notebook_v2",
+        "spriteWebUrl": "/resources/sprites/notebook_v2.png",
+        "aspectRatio": 1.049
+      }
+    ],
+    "visualScale": 1.02,
+    "aspectRatio": 0.938
+  },
+  {
+    "id": "paint_palette",
+    "name": "调色盘",
+    "category": "study",
+    "radius": 45,
+    "color": "#F2C894",
+    "spriteResource": "sprites/paint_palette",
+    "spriteWebUrl": "/resources/sprites/paint_palette.png",
+    "visualScale": 1.08,
+    "aspectRatio": 1.239
+  },
+  {
+    "id": "camera",
+    "name": "复古相机",
+    "category": "study",
+    "radius": 44,
+    "color": "#465668",
+    "spriteResource": "sprites/camera",
+    "spriteWebUrl": "/resources/sprites/camera.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/camera_v2",
+        "spriteWebUrl": "/resources/sprites/camera_v2.png",
+        "aspectRatio": 1.043
+      }
+    ],
+    "visualScale": 1.02,
+    "aspectRatio": 1.223
+  },
+  {
+    "id": "cactus",
+    "name": "仙人掌",
+    "category": "study",
+    "radius": 42,
+    "color": "#6EC072",
+    "spriteResource": "sprites/cactus",
+    "spriteWebUrl": "/resources/sprites/cactus.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/cactus_v2",
+        "spriteWebUrl": "/resources/sprites/cactus_v2.png",
+        "aspectRatio": 0.688
+      }
+    ],
+    "visualScale": 0.92,
+    "aspectRatio": 0.672
+  },
+  {
+    "id": "watch",
+    "name": "复古手表",
+    "category": "study",
+    "radius": 39,
+    "color": "#D48B56",
+    "spriteResource": "sprites/watch",
+    "spriteWebUrl": "/resources/sprites/watch.png",
+    "visualScale": 0.72,
+    "aspectRatio": 0.812
+  },
+  {
+    "id": "macaron",
+    "name": "彩色马卡龙",
+    "category": "cafe",
+    "radius": 43,
+    "color": "#FF8FAB",
+    "spriteResource": "sprites/macaron",
+    "spriteWebUrl": "/resources/sprites/macaron.png",
+    "visualScale": 0.8,
+    "aspectRatio": 0.542
+  },
+  {
+    "id": "boba_tea",
+    "name": "珍珠奶茶",
+    "category": "cafe",
+    "radius": 42,
+    "color": "#C98245",
+    "spriteResource": "sprites/boba_tea",
+    "spriteWebUrl": "/resources/sprites/boba_tea.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/boba_tea_v2",
+        "spriteWebUrl": "/resources/sprites/boba_tea_v2.png",
+        "aspectRatio": 0.599
+      }
+    ],
+    "visualScale": 0.96,
+    "aspectRatio": 0.646
+  },
+  {
+    "id": "croissant",
+    "name": "黄油牛角包",
+    "category": "cafe",
+    "radius": 44,
+    "color": "#F5A642",
+    "spriteResource": "sprites/croissant",
+    "spriteWebUrl": "/resources/sprites/croissant.png",
+    "visualScale": 0.96,
+    "aspectRatio": 1.362
+  },
+  {
+    "id": "ice_cream",
+    "name": "草莓甜筒",
+    "category": "cafe",
+    "radius": 42,
+    "color": "#6AD4AC",
+    "spriteResource": "sprites/ice_cream",
+    "spriteWebUrl": "/resources/sprites/ice_cream.png",
+    "visualScale": 0.94,
+    "aspectRatio": 0.484
+  },
+  {
+    "id": "pudding",
+    "name": "焦糖布丁",
+    "category": "cafe",
+    "radius": 43,
+    "color": "#FFE082",
+    "spriteResource": "sprites/pudding",
+    "spriteWebUrl": "/resources/sprites/pudding.png",
+    "visualScale": 0.86,
+    "aspectRatio": 1.103
+  },
+  {
+    "id": "cupcake",
+    "name": "蓝莓纸杯糕",
+    "category": "cafe",
+    "radius": 42,
+    "color": "#8C72E0",
+    "spriteResource": "sprites/cupcake",
+    "spriteWebUrl": "/resources/sprites/cupcake.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/cupcake_v2",
+        "spriteWebUrl": "/resources/sprites/cupcake_v2.png",
+        "aspectRatio": 0.833
+      }
+    ],
+    "visualScale": 0.84,
+    "aspectRatio": 0.818
+  },
+  {
+    "id": "cherry_pie",
+    "name": "樱桃派",
+    "category": "cafe",
+    "radius": 44,
+    "color": "#D93B58",
+    "spriteResource": "sprites/cherry_pie",
+    "spriteWebUrl": "/resources/sprites/cherry_pie.png",
+    "visualScale": 1.06,
+    "aspectRatio": 1.123
+  },
+  {
+    "id": "menu_board",
+    "name": "甜品黑板",
+    "category": "cafe",
+    "radius": 44,
+    "color": "#36404A",
+    "spriteResource": "sprites/menu_board",
+    "spriteWebUrl": "/resources/sprites/menu_board.png",
+    "visualScale": 1.24,
+    "aspectRatio": 0.839
+  },
+  {
+    "id": "cake",
+    "name": "草莓蛋糕",
+    "category": "cafe",
+    "radius": 44,
+    "color": "#E63946",
+    "spriteResource": "sprites/cake",
+    "spriteWebUrl": "/resources/sprites/cake.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/cake_v2",
+        "spriteWebUrl": "/resources/sprites/cake_v2.png",
+        "aspectRatio": 0.984
+      }
+    ],
+    "visualScale": 1.02,
+    "aspectRatio": 0.932
+  },
+  {
+    "id": "donut",
+    "name": "甜甜圈",
+    "category": "cafe",
+    "radius": 42,
+    "color": "#6B3A24",
+    "spriteResource": "sprites/donut",
+    "spriteWebUrl": "/resources/sprites/donut.png",
+    "visualScale": 0.84,
+    "aspectRatio": 1.231
+  },
+  {
+    "id": "coffee_cup",
+    "name": "热咖啡",
+    "category": "cafe",
+    "radius": 42,
+    "color": "#D86728",
+    "spriteResource": "sprites/coffee_cup",
+    "spriteWebUrl": "/resources/sprites/coffee_cup.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/coffee_cup_v2",
+        "spriteWebUrl": "/resources/sprites/coffee_cup_v2.png",
+        "aspectRatio": 1.097
+      }
+    ],
+    "visualScale": 0.92,
+    "aspectRatio": 0.833
+  },
+  {
+    "id": "teacup",
+    "name": "抹茶杯",
+    "category": "cafe",
+    "radius": 41,
+    "color": "#58B37C",
+    "spriteResource": "sprites/teacup",
+    "spriteWebUrl": "/resources/sprites/teacup.png",
+    "visualScale": 0.84,
+    "aspectRatio": 1.136
+  },
+  {
+    "id": "cookie_box",
+    "name": "曲奇盒",
+    "category": "cafe",
+    "radius": 44,
+    "color": "#3B78C4",
+    "spriteResource": "sprites/cookie_box",
+    "spriteWebUrl": "/resources/sprites/cookie_box.png",
+    "visualScale": 1.08,
+    "aspectRatio": 1.116
+  },
+  {
+    "id": "jam_jar",
+    "name": "草莓酱",
+    "category": "cafe",
+    "radius": 40,
+    "color": "#D8384F",
+    "spriteResource": "sprites/jam_jar",
+    "spriteWebUrl": "/resources/sprites/jam_jar.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/jam_jar_v2",
+        "spriteWebUrl": "/resources/sprites/jam_jar_v2.png",
+        "aspectRatio": 0.818
+      }
+    ],
+    "visualScale": 0.82,
+    "aspectRatio": 0.776
+  },
+  {
+    "id": "pan",
+    "name": "煎蛋锅",
+    "category": "kitchen",
+    "radius": 47,
+    "color": "#5A636E",
+    "spriteResource": "sprites/pan",
+    "spriteWebUrl": "/resources/sprites/pan.png",
+    "visualScale": 1.24,
+    "aspectRatio": 1.164
+  },
+  {
+    "id": "baguette",
+    "name": "法棍面包",
+    "category": "kitchen",
+    "radius": 45,
+    "color": "#E59C47",
+    "spriteResource": "sprites/baguette",
+    "spriteWebUrl": "/resources/sprites/baguette.png",
+    "visualScale": 1.18,
+    "aspectRatio": 1.11
+  },
+  {
+    "id": "cat_can",
+    "name": "猫粮罐头",
+    "category": "kitchen",
+    "radius": 42,
+    "color": "#FC9651",
+    "spriteResource": "sprites/cat_can",
+    "spriteWebUrl": "/resources/sprites/cat_can.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/cat_can_tilt",
+        "spriteWebUrl": "/resources/sprites/cat_can_tilt.png",
+        "pose": "tuck_corner",
+        "aspectRatio": 1.049
+      },
+      {
+        "spriteResource": "sprites/cat_can_tilt_v2",
+        "spriteWebUrl": "/resources/sprites/cat_can_tilt_v2.png",
+        "pose": "tuck_corner",
+        "aspectRatio": 1.171
+      }
+    ],
+    "visualScale": 0.78,
+    "aspectRatio": 0.964
+  },
+  {
+    "id": "snack_bag",
+    "name": "脆脆薯片",
+    "category": "kitchen",
+    "radius": 42,
+    "color": "#FFD147",
+    "spriteResource": "sprites/snack_bag",
+    "spriteWebUrl": "/resources/sprites/snack_bag.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/snack_bag_v2",
+        "spriteWebUrl": "/resources/sprites/snack_bag_v2.png",
+        "aspectRatio": 0.901
+      },
+      {
+        "spriteResource": "sprites/snack_bag_tuck",
+        "spriteWebUrl": "/resources/sprites/snack_bag_tuck.png",
+        "pose": "tuck_corner",
+        "aspectRatio": 0.859
+      }
+    ],
+    "visualScale": 0.94,
+    "aspectRatio": 0.823
+  },
+  {
+    "id": "kettle",
+    "name": "电水壶",
+    "category": "kitchen",
+    "radius": 45,
+    "color": "#E04F45",
+    "spriteResource": "sprites/kettle",
+    "spriteWebUrl": "/resources/sprites/kettle.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/kettle_v2",
+        "spriteWebUrl": "/resources/sprites/kettle_v2.png",
+        "aspectRatio": 0.885
+      }
+    ],
+    "visualScale": 1.14,
+    "aspectRatio": 1.049
+  },
+  {
+    "id": "teapot",
+    "name": "陶瓷茶壶",
+    "category": "kitchen",
+    "radius": 44,
+    "color": "#EB6A5B",
+    "spriteResource": "sprites/teapot",
+    "spriteWebUrl": "/resources/sprites/teapot.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/teapot_v2",
+        "spriteWebUrl": "/resources/sprites/teapot_v2.png",
+        "aspectRatio": 1.208
+      }
+    ],
+    "visualScale": 1.06,
+    "aspectRatio": 1.272
+  },
+  {
+    "id": "apple",
+    "name": "红苹果",
+    "category": "kitchen",
+    "radius": 40,
+    "color": "#EB5757",
+    "spriteResource": "sprites/apple",
+    "spriteWebUrl": "/resources/sprites/apple.png",
+    "visualScale": 0.74,
+    "aspectRatio": 0.885
+  },
+  {
+    "id": "banana",
+    "name": "大香蕉",
+    "category": "kitchen",
+    "radius": 43,
+    "color": "#FFD147",
+    "spriteResource": "sprites/banana",
+    "spriteWebUrl": "/resources/sprites/banana.png",
+    "visualScale": 0.94,
+    "aspectRatio": 1.016
+  },
+  {
+    "id": "milk_carton",
+    "name": "鲜牛奶",
+    "category": "kitchen",
+    "radius": 41,
+    "color": "#4A96D6",
+    "spriteResource": "sprites/milk_carton",
+    "spriteWebUrl": "/resources/sprites/milk_carton.png",
+    "visualScale": 0.92,
+    "aspectRatio": 0.708
+  },
+  {
+    "id": "thermos",
+    "name": "保温杯",
+    "category": "kitchen",
+    "radius": 41,
+    "color": "#2B8C82",
+    "spriteResource": "sprites/thermos",
+    "spriteWebUrl": "/resources/sprites/thermos.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/thermos_v2",
+        "spriteWebUrl": "/resources/sprites/thermos_v2.png",
+        "aspectRatio": 0.464
+      },
+      {
+        "spriteResource": "sprites/thermos_v3",
+        "spriteWebUrl": "/resources/sprites/thermos_v3.png",
+        "aspectRatio": 0.531
+      },
+      {
+        "spriteResource": "sprites/thermos_lie",
+        "spriteWebUrl": "/resources/sprites/thermos_lie.png",
+        "pose": "flat",
+        "aspectRatio": 0.943
+      },
+      {
+        "spriteResource": "sprites/thermos_lie_v2",
+        "spriteWebUrl": "/resources/sprites/thermos_lie_v2.png",
+        "pose": "flat",
+        "aspectRatio": 0.938
+      }
+    ],
+    "visualScale": 1,
+    "aspectRatio": 0.495
   },
   {
     "id": "keychain",
@@ -429,6 +1048,166 @@
     "radius": 40,
     "color": "#FFD147",
     "spriteResource": "sprites/keychain",
-    "spriteWebUrl": "/resources/sprites/keychain.png"
+    "spriteWebUrl": "/resources/sprites/keychain.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/keychain_tuck",
+        "spriteWebUrl": "/resources/sprites/keychain_tuck.png",
+        "pose": "tuck_corner",
+        "aspectRatio": 1.091
+      }
+    ],
+    "visualScale": 0.7,
+    "aspectRatio": 0.844
+  },
+  {
+    "id": "teddy",
+    "name": "小熊玩偶",
+    "category": "bedroom",
+    "radius": 47,
+    "color": "#D48B56",
+    "spriteResource": "sprites/teddy",
+    "spriteWebUrl": "/resources/sprites/teddy.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/teddy_v2",
+        "spriteWebUrl": "/resources/sprites/teddy_v2.png",
+        "aspectRatio": 0.776
+      },
+      {
+        "spriteResource": "sprites/teddy_v3",
+        "spriteWebUrl": "/resources/sprites/teddy_v3.png",
+        "aspectRatio": 0.76
+      }
+    ],
+    "visualScale": 1.24,
+    "aspectRatio": 0.88
+  },
+  {
+    "id": "lamp",
+    "name": "小台灯",
+    "category": "bedroom",
+    "radius": 44,
+    "color": "#FFE08C",
+    "spriteResource": "sprites/lamp",
+    "spriteWebUrl": "/resources/sprites/lamp.png",
+    "visualScale": 1.18,
+    "aspectRatio": 0.661
+  },
+  {
+    "id": "pillow",
+    "name": "暖色抱枕",
+    "category": "bedroom",
+    "radius": 46,
+    "color": "#4DA6A9",
+    "spriteResource": "sprites/pillow",
+    "spriteWebUrl": "/resources/sprites/pillow.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/pillow_v2",
+        "spriteWebUrl": "/resources/sprites/pillow_v2.png",
+        "aspectRatio": 1.067
+      }
+    ],
+    "visualScale": 1.24,
+    "aspectRatio": 1.157
+  },
+  {
+    "id": "slipper",
+    "name": "毛绒拖鞋",
+    "category": "bedroom",
+    "radius": 42,
+    "color": "#E86F8A",
+    "spriteResource": "sprites/slipper",
+    "spriteWebUrl": "/resources/sprites/slipper.png",
+    "visualScale": 0.94,
+    "aspectRatio": 1.371
+  },
+  {
+    "id": "alarm_clock",
+    "name": "小闹钟",
+    "category": "bedroom",
+    "radius": 42,
+    "color": "#EB6A5B",
+    "spriteResource": "sprites/alarm_clock",
+    "spriteWebUrl": "/resources/sprites/alarm_clock.png",
+    "visualScale": 0.88,
+    "aspectRatio": 0.719
+  },
+  {
+    "id": "sweater",
+    "name": "折毛衣",
+    "category": "bedroom",
+    "radius": 46,
+    "color": "#8E7FD8",
+    "spriteResource": "sprites/sweater",
+    "spriteWebUrl": "/resources/sprites/sweater.png",
+    "variants": [
+      {
+        "spriteResource": "sprites/sweater_v2",
+        "spriteWebUrl": "/resources/sprites/sweater_v2.png",
+        "aspectRatio": 1.239
+      },
+      {
+        "spriteResource": "sprites/sweater_drape_back",
+        "spriteWebUrl": "/resources/sprites/sweater_drape_back.png",
+        "pose": "drape_sofa_back",
+        "aspectRatio": 0.615
+      },
+      {
+        "spriteResource": "sprites/sweater_drape_back_v2",
+        "spriteWebUrl": "/resources/sprites/sweater_drape_back_v2.png",
+        "pose": "drape_sofa_back",
+        "aspectRatio": 0.693
+      },
+      {
+        "spriteResource": "sprites/sweater_drape_back_v3",
+        "spriteWebUrl": "/resources/sprites/sweater_drape_back_v3.png",
+        "pose": "drape_sofa_back",
+        "aspectRatio": 0.75
+      },
+      {
+        "spriteResource": "sprites/sweater_drape_edge",
+        "spriteWebUrl": "/resources/sprites/sweater_drape_edge.png",
+        "pose": "drape_sofa_edge",
+        "aspectRatio": 0.734
+      },
+      {
+        "spriteResource": "sprites/sweater_drape_edge_v2",
+        "spriteWebUrl": "/resources/sprites/sweater_drape_edge_v2.png",
+        "pose": "drape_table_edge",
+        "aspectRatio": 0.708
+      },
+      {
+        "spriteResource": "sprites/sweater_drape_edge_v3",
+        "spriteWebUrl": "/resources/sprites/sweater_drape_edge_v3.png",
+        "pose": "drape_sofa_edge",
+        "aspectRatio": 0.714
+      }
+    ],
+    "visualScale": 1.24,
+    "aspectRatio": 1.255
+  },
+  {
+    "id": "iron",
+    "name": "小熨斗",
+    "category": "bedroom",
+    "radius": 45,
+    "color": "#59B8D9",
+    "spriteResource": "sprites/iron",
+    "spriteWebUrl": "/resources/sprites/iron.png",
+    "visualScale": 1.06,
+    "aspectRatio": 1.11
+  },
+  {
+    "id": "sunglasses",
+    "name": "复古墨镜",
+    "category": "bedroom",
+    "radius": 42,
+    "color": "#324152",
+    "spriteResource": "sprites/sunglasses",
+    "spriteWebUrl": "/resources/sprites/sunglasses.png",
+    "visualScale": 0.8,
+    "aspectRatio": 1.433
   }
 ]

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "appName": "tidy-home",
+  "envId": "cloud1-d0gan532cb862dea5",
+  "storagePrefix": "tidy-home/resources",
+  "assetVersion": "v1",
+  "bundledRooms": [
+    "living_room",
+    "bathroom",
+    "study",
+    "cafe",
+    "kitchen",
+    "bedroom"
+  ],
+  "remoteRooms": [],
+  "remoteSprites": []
+}
